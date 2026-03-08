@@ -36,7 +36,8 @@ export async function loadChapter(
   chapter: number
 ): Promise<ChapterData | null> {
   try {
-    const response = await fetch(`/data/${lang}/${bookNumber}/${chapter}.json`);
+    const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+    const response = await fetch(`${base}/data/${lang}/${bookNumber}/${chapter}.json`);
     if (!response.ok) return null;
     return (await response.json()) as ChapterData;
   } catch {

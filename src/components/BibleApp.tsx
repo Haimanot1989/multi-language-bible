@@ -48,7 +48,8 @@ async function fetchChapter(lang: string, bookNumber: number, chapter: number) {
   } catch { /* ignore */ }
 
   try {
-    const response = await fetch(`/data/${lang}/${bookNumber}/${chapter}.json`);
+    const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+    const response = await fetch(`${base}/data/${lang}/${bookNumber}/${chapter}.json`);
     if (!response.ok) return null;
     const data = await response.json();
     chapterCache.set(key, data);
