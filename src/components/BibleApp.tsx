@@ -22,7 +22,7 @@ export interface SearchResult {
 }
 
 const languageConfig: { lang: Language; label: string; isGeez: boolean }[] = [
-  { lang: "no", label: "Norwegian", isGeez: false },
+  { lang: "no", label: "Norwegian NB 87/07", isGeez: false },
   { lang: "en", label: "English - KJV", isGeez: false },
   { lang: "ti", label: "Tigrinya", isGeez: true },
   { lang: "am", label: "Amharic", isGeez: true },

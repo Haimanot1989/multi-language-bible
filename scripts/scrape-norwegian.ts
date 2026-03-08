@@ -1,27 +1,48 @@
 /**
- * Scrape Norwegian Bokmål Bible from bolls.life
+ * Scrape Norwegian Bible (NB 88/07) from les.norsk-bibel.no
  *
- * API: https://bolls.life/get-text/NB/{bookNumber}/{chapter}/
- * Returns JSON array of { pk, verse, text, ... }
+ * URL: https://les.norsk-bibel.no/index_reader.php?res={norskBibelCode}:{chapter}
+ * HTML contains: <div class="verse N"><p ...><sup ...>N</sup>&nbsp;<span ...>TEXT</span></p></div>
  */
 import { bookList, saveChapter, sleep, type ScrapedChapter } from "./utils.js";
 
-const DELAY_MS = 250;
+const DELAY_MS = 300;
 
-interface BollsVerse {
-  pk: number;
-  verse: number;
-  text: string;
-  chapter: number;
-  book: number;
+function extractVerses(html: string): { verse: number; text: string }[] {
+  const verses: { verse: number; text: string }[] = [];
+
+  // Pattern: class="verse N"><p ...><sup ...>N</sup>&nbsp;<span ...>TEXT</span></p>
+  const regex = /class="verse (\d+)"><p[^>]*><sup[^>]*>\d+<\/sup>&nbsp;<span[^>]*>(.*?)<\/span><\/p>/g;
+  let match;
+
+  while ((match = regex.exec(html)) !== null) {
+    const verseNum = parseInt(match[1], 10);
+    // Strip HTML tags from verse text
+    let text = match[2].replace(/<[^>]+>/g, "").trim();
+    // Decode common HTML entities
+    text = text
+      .replace(/&nbsp;/g, " ")
+      .replace(/&amp;/g, "&")
+      .replace(/&lt;/g, "<")
+      .replace(/&gt;/g, ">")
+      .replace(/&#(\d+);/g, (_, code) => String.fromCharCode(parseInt(code)))
+      .trim();
+
+    if (verseNum > 0 && text.length > 0) {
+      verses.push({ verse: verseNum, text });
+    }
+  }
+
+  return verses;
 }
 
 async function scrapeChapter(
   bookName: string,
   bookNumber: number,
+  norskBibelCode: string,
   chapter: number
 ): Promise<ScrapedChapter | null> {
-  const url = `https://bolls.life/get-text/DNB/${bookNumber}/${chapter}/`;
+  const url = `https://les.norsk-bibel.no/index_reader.php?res=${norskBibelCode}:${chapter}`;
 
   try {
     const response = await fetch(url);
@@ -30,10 +51,14 @@ async function scrapeChapter(
       return null;
     }
 
-    const data = (await response.json()) as BollsVerse[];
+    // Read as buffer and decode as UTF-8 to preserve ø, å, æ
+    const buffer = await response.arrayBuffer();
+    const html = new TextDecoder("utf-8").decode(buffer);
 
-    if (!Array.isArray(data) || data.length === 0) {
-      console.error(`  ✗ No verses for ${bookName} ${chapter}`);
+    const verses = extractVerses(html);
+
+    if (verses.length === 0) {
+      console.error(`  ✗ No verses parsed for ${bookName} ${chapter}`);
       return null;
     }
 
@@ -41,10 +66,7 @@ async function scrapeChapter(
       book: bookName,
       bookNumber,
       chapter,
-      verses: data.map((v) => ({
-        verse: v.verse,
-        text: v.text.replace(/<[^>]*>/g, "").trim(), // strip any HTML tags
-      })),
+      verses,
     };
   } catch (err) {
     console.error(`  ✗ Error fetching ${bookName} ${chapter}:`, err);
@@ -53,17 +75,17 @@ async function scrapeChapter(
 }
 
 async function main() {
-  console.log("🇳🇴 Scraping Norwegian Bokmål from bolls.life...\n");
+  console.log("🇳🇴 Scraping Norwegian NB 88/07 from les.norsk-bibel.no...\n");
 
   let totalChapters = 0;
   let successCount = 0;
   let errorCount = 0;
 
   for (const book of bookList) {
-    console.log(`📖 ${book.name} (${book.chapters} chapters)`);
+    console.log(`📖 ${book.name} (${book.chapters} chapters) [${book.norskBibelCode}]`);
 
     for (let ch = 1; ch <= book.chapters; ch++) {
-      const data = await scrapeChapter(book.name, book.bookNumber, ch);
+      const data = await scrapeChapter(book.name, book.bookNumber, book.norskBibelCode, ch);
 
       if (data) {
         saveChapter("no", book.bookNumber, ch, data);
@@ -79,7 +101,7 @@ async function main() {
   }
 
   console.log(
-    `\n✅ Norwegian Bokmål complete: ${successCount}/${totalChapters} chapters scraped (${errorCount} errors)`
+    `\n✅ Norwegian NB 88/07 complete: ${successCount}/${totalChapters} chapters scraped (${errorCount} errors)`
   );
 }
 
