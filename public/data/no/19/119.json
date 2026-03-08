@@ -1,0 +1,711 @@
+{
+  "book": "Psalms",
+  "bookNumber": 19,
+  "chapter": 119,
+  "verses": [
+    {
+      "verse": 1,
+      "text": "Salige er de som går de oppriktiges vei, som vandrer i Herrens lov."
+    },
+    {
+      "verse": 2,
+      "text": "Salige er de som tar vare på hans vitnesbyrd, som søker ham av hele sitt hjerte,"
+    },
+    {
+      "verse": 3,
+      "text": "og ikke gjør urett, men vandrer på hans veier."
+    },
+    {
+      "verse": 4,
+      "text": "Du har gitt dine befalinger for at en skal holde dem nøye."
+    },
+    {
+      "verse": 5,
+      "text": "Å, at min ferd måtte bli stø, så jeg holder dine forskrifter!"
+    },
+    {
+      "verse": 6,
+      "text": "Da skal jeg ikke bli til skamme, når jeg gir akt på alle dine bud."
+    },
+    {
+      "verse": 7,
+      "text": "I hjertets oppriktighet vil jeg prise deg når jeg lærer dine rettferdige dommer å kjenne."
+    },
+    {
+      "verse": 8,
+      "text": "Dine forskrifter vil jeg holde, du må ikke rent forlate meg!"
+    },
+    {
+      "verse": 9,
+      "text": "Hvordan skal den unge holde sin sti ren? Ved å holde seg etter ditt ord."
+    },
+    {
+      "verse": 10,
+      "text": "Jeg søker deg av hele mitt hjerte, la meg ikke fare vill fra dine bud!"
+    },
+    {
+      "verse": 11,
+      "text": "I mitt hjerte har jeg gjemt ditt ord for at jeg ikke skal synde mot deg."
+    },
+    {
+      "verse": 12,
+      "text": "Lovet være du, Herre! Lær meg dine forskrifter."
+    },
+    {
+      "verse": 13,
+      "text": "Med mine lepper har jeg forkynt alle lover fra din munn."
+    },
+    {
+      "verse": 14,
+      "text": "Jeg har gledet meg over å vandre etter dine vitnesbyrd, som over all rikdom."
+    },
+    {
+      "verse": 15,
+      "text": "På dine befalinger vil jeg grunne, og tenke på dine stier."
+    },
+    {
+      "verse": 16,
+      "text": "Dine forskrifter er min lyst og glede, jeg glemmer ikke ditt ord."
+    },
+    {
+      "verse": 17,
+      "text": "Gjør vel imot din tjener, så jeg kan leve! Da vil jeg holde ditt ord."
+    },
+    {
+      "verse": 18,
+      "text": "Opplat mine øyne, så jeg kan skue de underfulle ting i din lov!"
+    },
+    {
+      "verse": 19,
+      "text": "Jeg er en gjest på jorden, skjul ikke dine bud for meg!"
+    },
+    {
+      "verse": 20,
+      "text": "Min sjel er knust, så jeg lengter etter dine lover til enhver tid."
+    },
+    {
+      "verse": 21,
+      "text": "Du har truet de overmodige, de forbannede, som farer vill fra dine bud."
+    },
+    {
+      "verse": 22,
+      "text": "Ta skam og forakt bort fra meg! For jeg har tatt vare på dine vitnesbyrd."
+    },
+    {
+      "verse": 23,
+      "text": "Selv om fyrster sitter og rådslår mot meg, grunner din tjener på dine forskrifter."
+    },
+    {
+      "verse": 24,
+      "text": "Dine vitnesbyrd er også min lyst, de er mine rådgivere."
+    },
+    {
+      "verse": 25,
+      "text": "Min sjel er nedtrykt i støvet, hold meg i live etter ditt ord!"
+    },
+    {
+      "verse": 26,
+      "text": "Jeg fortalte om mine veier, og du svarte meg. Lær meg dine forskrifter!"
+    },
+    {
+      "verse": 27,
+      "text": "La meg forstå den veien du befaler å gå! Så vil jeg grunne på dine undergjerninger."
+    },
+    {
+      "verse": 28,
+      "text": "Min sjel gråter av sorg, reis meg opp etter ditt ord!"
+    },
+    {
+      "verse": 29,
+      "text": "Vend løgnens vei bort fra meg, og unn meg din lov!"
+    },
+    {
+      "verse": 30,
+      "text": "Trofasthetens vei har jeg valgt, dine lover har jeg for øye."
+    },
+    {
+      "verse": 31,
+      "text": "Jeg holder fast ved dine vitnesbyrd. Herre, la meg ikke bli til skamme!"
+    },
+    {
+      "verse": 32,
+      "text": "Dine buds vei vil jeg løpe. For du frir mitt hjerte fra angst."
+    },
+    {
+      "verse": 33,
+      "text": "Lær meg, Herre, dine forskrifters vei! Så vil jeg ta vare på dem inntil enden."
+    },
+    {
+      "verse": 34,
+      "text": "Gi meg forstand, så vil jeg ta vare på din lov og holde den av hele mitt hjerte."
+    },
+    {
+      "verse": 35,
+      "text": "Led meg fram på dine buds sti! For i dem har jeg min lyst."
+    },
+    {
+      "verse": 36,
+      "text": "Bøy mitt hjerte til dine vitnesbyrd og ikke til urett vinning!"
+    },
+    {
+      "verse": 37,
+      "text": "Vend mine øyne bort fra å se etter tomhet! Hold meg i live på din vei!"
+    },
+    {
+      "verse": 38,
+      "text": "Stadfest ditt ord for din tjener, det som gir frykt for deg."
+    },
+    {
+      "verse": 39,
+      "text": "Ta bort min vanære, som jeg frykter! For dine lover er gode."
+    },
+    {
+      "verse": 40,
+      "text": "Se, jeg lengter etter dine befalinger. Hold meg i live ved din rettferd!"
+    },
+    {
+      "verse": 41,
+      "text": "Herre, la din nåde komme til meg, din frelse etter ditt ord!"
+    },
+    {
+      "verse": 42,
+      "text": "Jeg vil gi svar til dem som håner meg, for jeg setter min lit til ditt ord."
+    },
+    {
+      "verse": 43,
+      "text": "Ta da ikke sannhets ord bort fra min munn! For jeg venter på dine dommer."
+    },
+    {
+      "verse": 44,
+      "text": "Jeg vil holde din lov stadig, evig og alltid."
+    },
+    {
+      "verse": 45,
+      "text": "La meg vandre i fritt rom! For jeg spør etter dine befalinger."
+    },
+    {
+      "verse": 46,
+      "text": "Jeg vil tale om dine vitnesbyrd for konger, og skal ikke bli til skamme."
+    },
+    {
+      "verse": 47,
+      "text": "Jeg har min lyst i dine bud, jeg elsker dem."
+    },
+    {
+      "verse": 48,
+      "text": "Jeg løfter mine hender til dine bud, som jeg elsker. Jeg vil grunne på dine forskrifter."
+    },
+    {
+      "verse": 49,
+      "text": "Kom i hu ordet til din tjener, som du har gitt meg å håpe på!"
+    },
+    {
+      "verse": 50,
+      "text": "Det er min trøst i min elendighet at ditt ord har holdt meg i live."
+    },
+    {
+      "verse": 51,
+      "text": "Meget har de overmodige spottet meg, fra din lov har jeg ikke veket av."
+    },
+    {
+      "verse": 52,
+      "text": "Jeg minnes dine evige dommer Herre, og jeg blir trøstet."
+    },
+    {
+      "verse": 53,
+      "text": "Brennende harme har grepet meg over de ugudelige, som forlater din lov."
+    },
+    {
+      "verse": 54,
+      "text": "Dine forskrifter er blitt mine lovsanger i min utlendighets hus."
+    },
+    {
+      "verse": 55,
+      "text": "Om natten minnes jeg ditt navn, Herre, og jeg holdt din lov."
+    },
+    {
+      "verse": 56,
+      "text": "Dette ble meg gitt - at jeg har tatt vare på dine befalinger."
+    },
+    {
+      "verse": 57,
+      "text": "Herren er min del, jeg har sagt at jeg vil holde dine ord."
+    },
+    {
+      "verse": 58,
+      "text": "Jeg bønnfalt deg av hele mitt hjerte: Vær meg nådig etter ditt ord!"
+    },
+    {
+      "verse": 59,
+      "text": "Jeg tenkte på min ferd og vendte mine føtter til dine vitnesbyrd."
+    },
+    {
+      "verse": 60,
+      "text": "Jeg hastet og ventet ikke med å holde dine bud."
+    },
+    {
+      "verse": 61,
+      "text": "De ugudeliges snarer har omslynget meg, din lov har jeg ikke glemt."
+    },
+    {
+      "verse": 62,
+      "text": "Midt på natten står jeg opp for å prise deg for din rettferds lover."
+    },
+    {
+      "verse": 63,
+      "text": "Jeg holder meg til alle dem som frykter deg, og som holder dine befalinger."
+    },
+    {
+      "verse": 64,
+      "text": "Jorden er full av din miskunnhet, Herre. Lær meg dine forskrifter."
+    },
+    {
+      "verse": 65,
+      "text": "Du har gjort vel imot din tjener, Herre, etter ditt ord."
+    },
+    {
+      "verse": 66,
+      "text": "Lær meg god forstand og kunnskap! For jeg tror på dine bud."
+    },
+    {
+      "verse": 67,
+      "text": "Før jeg ble ydmyket, for jeg vill, men nå holder jeg ditt ord."
+    },
+    {
+      "verse": 68,
+      "text": "Du er god, og du gjør godt. Lær meg dine forskrifter."
+    },
+    {
+      "verse": 69,
+      "text": "De overmodige har spunnet sammen løgn imot meg. Jeg holder meg til dine befalinger av hele mitt hjerte."
+    },
+    {
+      "verse": 70,
+      "text": "Deres hjerte er følelsesløst som en fettklump. Jeg har min lyst i din lov."
+    },
+    {
+      "verse": 71,
+      "text": "Det er godt for meg at jeg ble ydmyket, så jeg kunne lære dine forskrifter."
+    },
+    {
+      "verse": 72,
+      "text": "Din munns lov er bedre for meg enn tusen stykker gull og sølv."
+    },
+    {
+      "verse": 73,
+      "text": "Dine hender har skapt meg og gjort meg. Gi meg forstand for at jeg må lære dine bud!"
+    },
+    {
+      "verse": 74,
+      "text": "De som frykter deg, skal se meg og glede seg, for jeg venter på ditt ord."
+    },
+    {
+      "verse": 75,
+      "text": "Jeg vet, Herre, at dine dommer er rettferdige, og i trofasthet har du ydmyket meg."
+    },
+    {
+      "verse": 76,
+      "text": "La din miskunnhet være min trøst etter ditt ord til din tjener!"
+    },
+    {
+      "verse": 77,
+      "text": "La din miskunnhet komme til meg for at jeg kan leve! For din lov er min lyst."
+    },
+    {
+      "verse": 78,
+      "text": "La de overmodige bli til skamme! For de har trykt meg ned med løgnens hjelp, men jeg grunner på dine befalinger."
+    },
+    {
+      "verse": 79,
+      "text": "La dem vende tilbake til meg, de som frykter deg og som kjenner dine vitnesbyrd!"
+    },
+    {
+      "verse": 80,
+      "text": "La mitt hjerte være fullkomment i dine forskrifter, for at jeg ikke skal bli til skamme!"
+    },
+    {
+      "verse": 81,
+      "text": "Min sjel tæres av lengsel etter din frelse, og jeg venter på ditt ord."
+    },
+    {
+      "verse": 82,
+      "text": "Mine øyne tæres av lengsel etter ditt ord, og jeg sier: Når vil du trøste meg?"
+    },
+    {
+      "verse": 83,
+      "text": "For jeg er blitt som en skinnsekk i røk. Dine forskrifter glemmer jeg ikke."
+    },
+    {
+      "verse": 84,
+      "text": "Hvor mange er vel din tjeners dager? Når vil du holde dom over mine forfølgere?"
+    },
+    {
+      "verse": 85,
+      "text": "De overmodige har gravd fallgraver for meg, de som ikke skikker seg etter din lov."
+    },
+    {
+      "verse": 86,
+      "text": "Alle dine bud er trofasthet. Med løgn forfølger de meg, hjelp meg!"
+    },
+    {
+      "verse": 87,
+      "text": "På lite nær har de tilintetgjort meg i landet, men jeg har ikke forlatt dine befalinger."
+    },
+    {
+      "verse": 88,
+      "text": "Hold meg i live etter din miskunnhet! Så vil jeg ta vare på din munns vitnesbyrd."
+    },
+    {
+      "verse": 89,
+      "text": "Til evig tid, Herre, står ditt ord fast i himmelen."
+    },
+    {
+      "verse": 90,
+      "text": "Fra slekt til slekt varer din trofasthet. Du grunnfestet jorden, og den sto der."
+    },
+    {
+      "verse": 91,
+      "text": "Til å utføre dine dommer står de der ennå i dag, for alle ting er dine tjenere."
+    },
+    {
+      "verse": 92,
+      "text": "Dersom din lov ikke hadde vært min lyst, var jeg omkommet i min elendighet."
+    },
+    {
+      "verse": 93,
+      "text": "Til evig tid skal jeg ikke glemme dine befalinger, for ved dem har du holdt meg i live."
+    },
+    {
+      "verse": 94,
+      "text": "Din er jeg, frels meg! For jeg har søkt dine befalinger."
+    },
+    {
+      "verse": 95,
+      "text": "De ugudelige har ventet på meg for å ødelegge meg. Jeg gir akt på dine vitnesbyrd."
+    },
+    {
+      "verse": 96,
+      "text": "På all fullkommenhet har jeg sett en ende, men ditt bud strekker seg meget vidt."
+    },
+    {
+      "verse": 97,
+      "text": "Å, hvor høyt jeg elsker din lov! Hele dagen grunner jeg på den."
+    },
+    {
+      "verse": 98,
+      "text": "Dine bud gjør meg visere enn mine fiender, for de er mine til evig tid."
+    },
+    {
+      "verse": 99,
+      "text": "Jeg er blitt klokere enn alle mine lærere, for jeg grunner på dine vitnesbyrd."
+    },
+    {
+      "verse": 100,
+      "text": "Jeg er mer forstandig enn de gamle, for jeg tar vare på dine befalinger."
+    },
+    {
+      "verse": 101,
+      "text": "Fra hver ond sti har jeg holdt mine føtter borte, for at jeg kunne holde ditt ord."
+    },
+    {
+      "verse": 102,
+      "text": "Fra dine lover har jeg ikke veket av, for du har lært meg."
+    },
+    {
+      "verse": 103,
+      "text": "Hvor dine ord er søte for min gane, de er bedre enn honning for min munn!"
+    },
+    {
+      "verse": 104,
+      "text": "Av dine befalinger får jeg forstand, derfor hater jeg all løgnens sti."
+    },
+    {
+      "verse": 105,
+      "text": "Ditt ord er en lykt for min fot og et lys på min sti."
+    },
+    {
+      "verse": 106,
+      "text": "Jeg har sverget, og jeg skal holde det: Å ta vare på din rettferdighets lover."
+    },
+    {
+      "verse": 107,
+      "text": "Jeg er dypt nedbøyd, Herre, hold meg i live etter ditt ord!"
+    },
+    {
+      "verse": 108,
+      "text": "La min munns frivillige offer behage deg, Herre! Og lær meg dine lover!"
+    },
+    {
+      "verse": 109,
+      "text": "Jeg går alltid med livet i hendene, men din lov har jeg ikke glemt."
+    },
+    {
+      "verse": 110,
+      "text": "De ugudelige setter snare for meg, men jeg har ikke forvillet meg bort fra dine befalinger."
+    },
+    {
+      "verse": 111,
+      "text": "Jeg har fått dine vitnesbyrd i evig eie, for de er mitt hjertes glede."
+    },
+    {
+      "verse": 112,
+      "text": "Jeg har bøyd mitt hjerte til å gjøre etter dine forskrifter for evig, inntil enden."
+    },
+    {
+      "verse": 113,
+      "text": "Vinglete mennesker hater jeg, men din lov elsker jeg."
+    },
+    {
+      "verse": 114,
+      "text": "Du er mitt skjul og mitt skjold, jeg venter på ditt ord."
+    },
+    {
+      "verse": 115,
+      "text": "Vik fra meg, dere som gjør ondt, for jeg vil holde min Guds bud!"
+    },
+    {
+      "verse": 116,
+      "text": "Hold meg oppe etter ditt ord, så jeg kan leve, og la meg ikke bli til skamme i mitt håp."
+    },
+    {
+      "verse": 117,
+      "text": "Støtt meg, så jeg kan bli frelst! Da vil jeg alltid se med lyst på dine forskrifter."
+    },
+    {
+      "verse": 118,
+      "text": "Du forkaster alle dem som farer vill fra dine forskrifter, for alt de sier er ondskap og løgn."
+    },
+    {
+      "verse": 119,
+      "text": "Du rydder vekk som slagg alle de ugudelige i landet. Derfor elsker jeg dine vitnesbyrd."
+    },
+    {
+      "verse": 120,
+      "text": "Min kropp skjelver av redsel for deg, og jeg frykter for dine dommer."
+    },
+    {
+      "verse": 121,
+      "text": "Jeg har gjort rett og rettferdighet, du vil ikke overgi meg til undertrykkere."
+    },
+    {
+      "verse": 122,
+      "text": "Gå god for din tjener, så det kan gå ham vel! La ikke de overmodige undertrykke meg!"
+    },
+    {
+      "verse": 123,
+      "text": "Mine øyne blir matte, slik speider jeg etter din frelse og etter ditt rettferdige ord."
+    },
+    {
+      "verse": 124,
+      "text": "Gjør med din tjener etter din miskunn, og lær meg dine forskrifter!"
+    },
+    {
+      "verse": 125,
+      "text": "Jeg er din tjener. Lær meg, så jeg kan kjenne dine vitnesbyrd!"
+    },
+    {
+      "verse": 126,
+      "text": "Det er tid for Herren til å gripe inn, de har brutt din lov."
+    },
+    {
+      "verse": 127,
+      "text": "Derfor elsker jeg dine bud mer enn gull, ja, mer enn fint gull."
+    },
+    {
+      "verse": 128,
+      "text": "Derfor holder jeg alle befalinger om alle ting for å være rette, jeg hater alle falske veier."
+    },
+    {
+      "verse": 129,
+      "text": "Underfulle er dine vitnesbyrd. Derfor tar min sjel vare på dem."
+    },
+    {
+      "verse": 130,
+      "text": "Når dine ord åpner seg, gir de lys, de gir enfoldige forstand."
+    },
+    {
+      "verse": 131,
+      "text": "Jeg åpnet munnen og sukket av lengsel, for jeg stundet etter dine bud."
+    },
+    {
+      "verse": 132,
+      "text": "Vend deg til meg og vær meg nådig, som rett er mot dem som elsker ditt navn!"
+    },
+    {
+      "verse": 133,
+      "text": "Gjør mine fottrinn faste ved ditt ord, og la ingen urett herske over meg!"
+    },
+    {
+      "verse": 134,
+      "text": "Forløs meg fra menneskers vold, så vil jeg holde dine befalinger."
+    },
+    {
+      "verse": 135,
+      "text": "La ditt åsyn lyse for din tjener, og lær meg dine forskrifter!"
+    },
+    {
+      "verse": 136,
+      "text": "Mine øyne flyter bort i vannstrømmer fordi din lov ikke blir fulgt."
+    },
+    {
+      "verse": 137,
+      "text": "Du er rettferdig, Herre, og rettvise er dine dommer."
+    },
+    {
+      "verse": 138,
+      "text": "Du har fastsatt dine vitnesbyrd i rettferdighet og stor trofasthet."
+    },
+    {
+      "verse": 139,
+      "text": "Min nidkjærhet har fortært meg, fordi mine motstandere har glemt dine ord."
+    },
+    {
+      "verse": 140,
+      "text": "Ditt ord er lutret og renset, og din tjener elsker det."
+    },
+    {
+      "verse": 141,
+      "text": "Jeg er liten og foraktet, jeg har ikke glemt dine befalinger."
+    },
+    {
+      "verse": 142,
+      "text": "Din rettferdighet er en evig rettferdighet, og din lov er sannhet."
+    },
+    {
+      "verse": 143,
+      "text": "Nød og trengsel fant meg, dine bud er min lyst."
+    },
+    {
+      "verse": 144,
+      "text": "Dine vitnesbyrd er rettferdige til evig tid. Lær meg, for at jeg kan leve."
+    },
+    {
+      "verse": 145,
+      "text": "Jeg roper av hele mitt hjerte, svar meg, Herre! Jeg vil ta vare på dine forskrifter."
+    },
+    {
+      "verse": 146,
+      "text": "Jeg roper til deg, frels meg! Så vil jeg holde dine vitnesbyrd."
+    },
+    {
+      "verse": 147,
+      "text": "Jeg var oppe tidlig i morgengryet og ropte om hjelp. Jeg ventet på dine ord."
+    },
+    {
+      "verse": 148,
+      "text": "Mine øyne var våkne i nattevaktene, for at jeg kunne grunne på ditt ord."
+    },
+    {
+      "verse": 149,
+      "text": "Hør min røst etter din miskunnhet! Herre, hold meg i live etter dine lover!"
+    },
+    {
+      "verse": 150,
+      "text": "Nå kommer de nær, de som er ivrige etter å gjøre ondt, de er kommet langt bort fra din lov."
+    },
+    {
+      "verse": 151,
+      "text": "Du er nær, Herre, og alle dine bud er sannhet."
+    },
+    {
+      "verse": 152,
+      "text": "For lenge siden har jeg forstått av dine vitnesbyrd at du har fastsatt dem for evig."
+    },
+    {
+      "verse": 153,
+      "text": "Se til min elendighet og fri meg ut! For jeg har ikke glemt din lov."
+    },
+    {
+      "verse": 154,
+      "text": "Før min sak og forløs meg, hold meg i live etter ditt ord!"
+    },
+    {
+      "verse": 155,
+      "text": "Frelse er langt borte fra de ugudelige, for de søker ikke dine forskrifter."
+    },
+    {
+      "verse": 156,
+      "text": "Stor er din miskunnhet, Herre! Hold meg i live etter dine dommer!"
+    },
+    {
+      "verse": 157,
+      "text": "Mine forfølgere og mine motstandere er mange. Jeg har ikke veket av fra dine vitnesbyrd."
+    },
+    {
+      "verse": 158,
+      "text": "Med avsky så jeg de troløse, de som ikke holdt ditt ord."
+    },
+    {
+      "verse": 159,
+      "text": "Se, hvor jeg har elsket dine befalinger! Herre, hold meg i live etter din miskunnhet!"
+    },
+    {
+      "verse": 160,
+      "text": "Summen av ditt ord er sannhet, og til evig tid står all din rettferds lov fast."
+    },
+    {
+      "verse": 161,
+      "text": "Stormenn forfulgte meg uten årsak, men mitt hjerte fryktet dine ord."
+    },
+    {
+      "verse": 162,
+      "text": "Jeg gleder meg over ditt ord som en som finner stort bytte."
+    },
+    {
+      "verse": 163,
+      "text": "Løgn har jeg hatet og avskydd, din lov har jeg elsket."
+    },
+    {
+      "verse": 164,
+      "text": "Sju ganger om dagen har jeg prist deg for dine rettferdige lover."
+    },
+    {
+      "verse": 165,
+      "text": "Stor fred har de som elsker din lov, og det er ikke noe anstøt for dem."
+    },
+    {
+      "verse": 166,
+      "text": "Jeg har ventet på din frelse, Herre, og jeg har holdt dine bud."
+    },
+    {
+      "verse": 167,
+      "text": "Min sjel har holdt dine vitnesbyrd, og jeg elsket dem høyt."
+    },
+    {
+      "verse": 168,
+      "text": "Jeg har holdt dine befalinger og dine vitnesbyrd, for alle mine veier er for ditt åsyn."
+    },
+    {
+      "verse": 169,
+      "text": "La mitt klagerop komme nær ditt åsyn, Herre! Gi meg forstand etter ditt ord!"
+    },
+    {
+      "verse": 170,
+      "text": "La min inderlige bønn komme for ditt åsyn! Frels meg etter ditt ord!"
+    },
+    {
+      "verse": 171,
+      "text": "Mine lepper skal flyte over av lovsang, for du lærer meg dine forskrifter."
+    },
+    {
+      "verse": 172,
+      "text": "Min tunge skal synge om ditt ord, for alle dine bud er rettferd."
+    },
+    {
+      "verse": 173,
+      "text": "La din hånd komme meg til hjelp! For jeg har valgt dine befalinger."
+    },
+    {
+      "verse": 174,
+      "text": "Jeg lengter etter din frelse, Herre, og din lov er min lyst."
+    },
+    {
+      "verse": 175,
+      "text": "La min sjel leve og lovprise deg, og la dine dommer hjelpe meg!"
+    },
+    {
+      "verse": 176,
+      "text": "Jeg har fart vill. Oppsøk din tjener som et tapt får! For jeg har ikke glemt dine bud."
+    }
+  ]
+}

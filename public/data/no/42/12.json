@@ -1,0 +1,243 @@
+{
+  "book": "Luke",
+  "bookNumber": 42,
+  "chapter": 12,
+  "verses": [
+    {
+      "verse": 1,
+      "text": "Imens hadde folket samlet seg i tusenvis, så de holdt på å trå hverandre ned. Da begynte Jesus å tale, først og fremst til disiplene sine: Ta dere i vare for fariseernes surdeig, som er hykleri."
+    },
+    {
+      "verse": 2,
+      "text": "Men ikke noe er tildekket som ikke skal bli åpenbart, og intet er skjult som ikke skal bli kjent."
+    },
+    {
+      "verse": 3,
+      "text": "Derfor skal alt det som dere sier i mørket, bli hørt i lyset. Og det som dere hvisket noen i øret inne i kamrene, skal bli ropt ut på hustakene."
+    },
+    {
+      "verse": 4,
+      "text": "Men til dere, mine venner, sier jeg: Frykt ikke for dem som slår legemet i hjel og deretter ikke kan gjøre mer."
+    },
+    {
+      "verse": 5,
+      "text": "Jeg skal vise dere hvem dere skal frykte: Frykt for ham som har makt til å slå i hjel og til deretter å kaste i helvete. Ja, sier jeg dere: Ham skal dere frykte."
+    },
+    {
+      "verse": 6,
+      "text": "Selges ikke fem spurver for to skilling? Og ikke én av dem er glemt hos Gud."
+    },
+    {
+      "verse": 7,
+      "text": "Men til og med hvert hår dere har på hodet, er talt. Frykt ikke! Dere er mer enn mange spurver."
+    },
+    {
+      "verse": 8,
+      "text": "Jeg sier dere: Hver den som bekjenner meg for menneskene, ham skal også Menneskesønnen kjennes ved for Guds engler."
+    },
+    {
+      "verse": 9,
+      "text": "Men den som fornekter meg for menneskene, han skal bli fornektet for Guds engler."
+    },
+    {
+      "verse": 10,
+      "text": "Og hver den som taler et ord mot Menneskesønnen, han skal få forlatelse. Men den som spotter Den Hellige Ånd, skal ikke få forlatelse."
+    },
+    {
+      "verse": 11,
+      "text": "Men når de fører dere fram i synagogene og for øvrigheter og myndigheter, så vær ikke bekymret for hvordan eller hva dere skal forsvare dere med, eller hva dere skal si."
+    },
+    {
+      "verse": 12,
+      "text": "For Den Hellige Ånd skal lære dere i samme stund hva som bør sies."
+    },
+    {
+      "verse": 13,
+      "text": "En i mengden sa da til ham: Mester, si til min bror at han skal skifte arven med meg!"
+    },
+    {
+      "verse": 14,
+      "text": "Men han sa til ham: Menneske! Hvem har satt meg til å dømme eller skifte mellom dere?"
+    },
+    {
+      "verse": 15,
+      "text": "Han sa til dem: Se til å ta dere i vare for all havesyke! For ingen har sitt liv av sin eiendom, selv om han har overflod."
+    },
+    {
+      "verse": 16,
+      "text": "Han fortalte dem så en lignelse og sa: En rik mann fikk stor avling av jorden sin."
+    },
+    {
+      "verse": 17,
+      "text": "Da tenkte han ved seg selv: Hva skal jeg gjøre? Jeg har jo ikke rom nok til å samle avlingen min i."
+    },
+    {
+      "verse": 18,
+      "text": "Og han sa: Dette vil jeg gjøre: Jeg vil rive ned låvebygningene mine og bygge større. Der vil jeg samle hele min avling og mitt gods."
+    },
+    {
+      "verse": 19,
+      "text": "Så vil jeg si til min sjel: Sjel! du har mye godt liggende for mange år. Slå deg til ro - et, drikk, vær glad!"
+    },
+    {
+      "verse": 20,
+      "text": "Men Gud sa til ham: Du dåre! I denne natt kreves din sjel av deg. Hvem skal så ha det du har samlet?"
+    },
+    {
+      "verse": 21,
+      "text": "Slik er det med den som samler seg skatter og ikke er rik i Gud."
+    },
+    {
+      "verse": 22,
+      "text": "Og han sa til disiplene: Derfor sier jeg dere: Vær ikke bekymret for livet, hva dere skal ete, heller ikke for kroppen - hva dere skal kle dere med!"
+    },
+    {
+      "verse": 23,
+      "text": "For livet er mer enn maten og kroppen mer enn klærne."
+    },
+    {
+      "verse": 24,
+      "text": "Legg merke til ravnene! De verken sår eller høster, de har verken matbod eller låve, og Gud før dem likevel. Hvor mye mer er ikke dere verd enn fuglene!"
+    },
+    {
+      "verse": 25,
+      "text": "Og hvem av dere kan med all sin bekymring legge en alen til sin livslengde?"
+    },
+    {
+      "verse": 26,
+      "text": "Makter dere da ikke engang det minste, hvorfor er dere da bekymret for det andre?"
+    },
+    {
+      "verse": 27,
+      "text": "Gi akt på liljene, hvordan de vokser! De arbeider ikke, de spinner ikke. Men jeg sier dere: Selv ikke Salomo i all sin herlighet var kledd som en av dem!"
+    },
+    {
+      "verse": 28,
+      "text": "Men kler Gud slik gresset på marken, det som står i dag og i morgen kastes i ovnen, hvor mye mer skal han da kle dere, dere lite troende!"
+    },
+    {
+      "verse": 29,
+      "text": "Og søk ikke etter hva dere skal ete og hva dere skal drikke, og la ikke tankene deres fare hit og dit."
+    },
+    {
+      "verse": 30,
+      "text": "For alt dette søker hedningene i verden etter. Men deres Far vet at dere trenger alt dette."
+    },
+    {
+      "verse": 31,
+      "text": "Men søk hans rike, så skal dere få dette i tillegg!"
+    },
+    {
+      "verse": 32,
+      "text": "Frykt ikke, du lille hjord! For det har behaget deres Far å gi dere riket."
+    },
+    {
+      "verse": 33,
+      "text": "Selg det dere eier, og gi det som almisser! Gjør dere pengepunger som ikke eldes, skaff dere en uforgjengelig skatt i himmelen, der hvor ingen tyv kommer til, og møll ikke tærer."
+    },
+    {
+      "verse": 34,
+      "text": "For hvor din skatt er, der vil også ditt hjerte være."
+    },
+    {
+      "verse": 35,
+      "text": "La hoftene være ombundet og lampene brennende!"
+    },
+    {
+      "verse": 36,
+      "text": "Og vær dere som folk som venter på sin herre når han vender hjem fra bryllupet, for at de kan åpne for ham straks han kommer og banker på."
+    },
+    {
+      "verse": 37,
+      "text": "Salige er de tjenere som Herren finner våkne når han kommer! Sannelig sier jeg dere: Han skal binde opp om seg og la dem gå til bords og selv komme og tjene dem."
+    },
+    {
+      "verse": 38,
+      "text": "Og om han kommer i den annen eller tredje vakt og finner det slik - salige er de!"
+    },
+    {
+      "verse": 39,
+      "text": "Men dette skal dere vite: Dersom husbonden visste i hvilken time tyven kom, da ville han ikke la ham bryte inn i huset sitt."
+    },
+    {
+      "verse": 40,
+      "text": "Vær da også dere rede! For Menneskesønnen kommer i den time dere ikke tenker."
+    },
+    {
+      "verse": 41,
+      "text": "Da sa Peter til ham: Herre, er det til oss du taler denne lignelsen, eller også til alle andre?"
+    },
+    {
+      "verse": 42,
+      "text": "Og Herren sa: Hvem er da den tro og kloke forvalter, som herren skal sette over husfolket sitt for å gi dem deres mat i rette tid?"
+    },
+    {
+      "verse": 43,
+      "text": "Salig er den tjener som herren finner i ferd med å gjøre dette når han kommer."
+    },
+    {
+      "verse": 44,
+      "text": "Sannelig sier jeg dere: Han skal sette ham over alt han eier!"
+    },
+    {
+      "verse": 45,
+      "text": "Men dersom denne tjeneren sier i sitt hjerte: Min herre dryger med å komme! - og han gir seg til å slå tjenerne og pikene og ete og drikke og fylle seg,"
+    },
+    {
+      "verse": 46,
+      "text": "da skal denne tjenerens herre komme en dag da han ikke venter det og i en time som han ikke vet. Og han skal hogge ham ned og gi ham del med de vantro."
+    },
+    {
+      "verse": 47,
+      "text": "Den tjener som kjente sin herres vilje og ikke stelte i stand eller gjorde etter hans vilje, skal få mange slag."
+    },
+    {
+      "verse": 48,
+      "text": "Men den som ikke kjente den, og gjorde det som fortjente slag, han skal få færre slag. Hver den som mye er gitt, av ham skal mye kreves. Og den som har fått mye betrodd, av ham skal dess mer fordres."
+    },
+    {
+      "verse": 49,
+      "text": "Ild er jeg kommet for å kaste på jorden, og hvor jeg skulle ønske at den alt var tent!"
+    },
+    {
+      "verse": 50,
+      "text": "Men en dåp har jeg å døpes med, og hvor jeg gruer til den er fullført!"
+    },
+    {
+      "verse": 51,
+      "text": "Tror dere jeg er kommet for å gi fred på jorden? Nei, sier jeg dere, men strid!"
+    },
+    {
+      "verse": 52,
+      "text": "For fra nå av skal fem i et hus være i strid med hverandre, tre mot to og to mot tre."
+    },
+    {
+      "verse": 53,
+      "text": "Far skal stå i strid mot sønn, og sønn mot far, mor mot datter og datter mot mor, svigermor mot svigerdatter og svigerdatter mot svigermor."
+    },
+    {
+      "verse": 54,
+      "text": "Og han sa til folket: Når dere ser en sky stige opp i vest, sier dere straks: Det kommer regn! Og slik skjer det."
+    },
+    {
+      "verse": 55,
+      "text": "Og når dere ser at det blåser fra sør, sier dere: Det blir varmt! Og det blir slik."
+    },
+    {
+      "verse": 56,
+      "text": "Hyklere! Jordens og himmelens utseende vet dere å tyde. Hvorfor kan dere da ikke tyde denne tiden?"
+    },
+    {
+      "verse": 57,
+      "text": "Og hvorfor dømmer dere ikke av dere selv hva som er rett?"
+    },
+    {
+      "verse": 58,
+      "text": "For når du går til øvrigheten med din motpart, så gjør deg umak med å komme overens med ham mens du ennå er på veien, for at han ikke skal dra deg for dommeren, og dommeren overgi deg til vokteren, og vokteren kaste deg i fengsel."
+    },
+    {
+      "verse": 59,
+      "text": "Jeg sier deg: Du skal slett ikke komme ut derfra før du har betalt til siste øre."
+    }
+  ]
+}

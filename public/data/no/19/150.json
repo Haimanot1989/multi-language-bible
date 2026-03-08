@@ -1,0 +1,31 @@
+{
+  "book": "Psalms",
+  "bookNumber": 19,
+  "chapter": 150,
+  "verses": [
+    {
+      "verse": 1,
+      "text": "Halleluja! Lov Gud i hans helligdom, lov ham i hans mektige hvelving!"
+    },
+    {
+      "verse": 2,
+      "text": "Lov ham for hans mektige verk, lov ham etter hans storhets velde."
+    },
+    {
+      "verse": 3,
+      "text": "Lov ham med tone fra horn, lov ham med harpe og sitar!"
+    },
+    {
+      "verse": 4,
+      "text": "Lov ham med tamburin og dans, lov ham med strengelek og fløyte!"
+    },
+    {
+      "verse": 5,
+      "text": "Lov ham med tonende cymbler, lov ham med høyt klingende cymbler."
+    },
+    {
+      "verse": 6,
+      "text": "Alt som har ånde, skal love Herren! Halleluja!"
+    }
+  ]
+}

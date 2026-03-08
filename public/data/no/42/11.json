@@ -1,0 +1,223 @@
+{
+  "book": "Luke",
+  "bookNumber": 42,
+  "chapter": 11,
+  "verses": [
+    {
+      "verse": 1,
+      "text": "Det skjedde at han var et sted og ba. Da han holdt opp, sa en av disiplene hans til ham: Herre, lær oss å be, slik som Johannes lærte disiplene sine."
+    },
+    {
+      "verse": 2,
+      "text": "Han sa da til dem: Når dere ber, skal dere si: Fader vår, du som er i himmelen. Helliget vorde ditt navn. Komme ditt rike. Skje din vilje, som i himmelen, så òg på jorden."
+    },
+    {
+      "verse": 3,
+      "text": "Gi oss hver dag vårt daglige brød."
+    },
+    {
+      "verse": 4,
+      "text": "Og forlat oss våre synder, for også vi tilgir hver den som står i skyld til oss. Og led oss ikke inn i fristelse, men fri oss fra det onde."
+    },
+    {
+      "verse": 5,
+      "text": "Og han sa til dem: Sett at en av dere har en venn og kommer til ham midt på natten og sier til ham: Venn, lån meg tre brød!"
+    },
+    {
+      "verse": 6,
+      "text": "For en venn av meg er kommet til meg fra reise, og jeg har ikke noe å sette fram for ham."
+    },
+    {
+      "verse": 7,
+      "text": "Skulle da han der inne svare: Bry meg ikke! Døren er alt stengt, og småbarna mine er i seng med meg. Jeg kan ikke stå opp og gi deg det."
+    },
+    {
+      "verse": 8,
+      "text": "Jeg sier dere: Om han ikke står opp og gir ham det fordi han er hans venn, så vil han stå opp fordi han er så pågående, og gi ham alt det han trenger."
+    },
+    {
+      "verse": 9,
+      "text": "Og jeg sier dere: Be, så skal dere få. Let, så skal dere finne. Bank på, så skal det lukkes opp for dere."
+    },
+    {
+      "verse": 10,
+      "text": "For hver den som ber, han får. Og den som leter, han finner. Og den som banker på, for ham skal det lukkes opp."
+    },
+    {
+      "verse": 11,
+      "text": "Hvem av dere som er far, vil gi sønnen sin en stein når han ber om et brød? Eller når han ber om en fisk, gi ham en orm i stedet for fisken?"
+    },
+    {
+      "verse": 12,
+      "text": "Eller når han ber om et egg, gi ham en skorpion?"
+    },
+    {
+      "verse": 13,
+      "text": "Hvis da dere som er onde, vet å gi barna deres gode gaver, hvor mye mer skal da den himmelske Far gi Den Hellige Ånd til dem som ber ham."
+    },
+    {
+      "verse": 14,
+      "text": "Han drev ut en ond ånd, og den var stum. Men det skjedde da den onde ånden var fart ut, da talte den stumme. Og folket undret seg."
+    },
+    {
+      "verse": 15,
+      "text": "Men noen av dem sa: Det er ved Be’elsebul, de onde ånders fyrste, han driver de onde åndene ut."
+    },
+    {
+      "verse": 16,
+      "text": "Andre igjen fristet ham og krevde et tegn fra himmelen av ham."
+    },
+    {
+      "verse": 17,
+      "text": "Men han visste hva de tenkte, og sa til dem: Hvert rike som kommer i strid med seg selv, blir lagt øde, og hus faller på hus."
+    },
+    {
+      "verse": 18,
+      "text": "Men om nå Satan er kommet i strid med seg selv, hvordan kan da hans rike bli stående? Dere sier jo at det er ved Be’elsebul jeg driver de onde åndene ut!"
+    },
+    {
+      "verse": 19,
+      "text": "Men er det ved Be’elsebul jeg driver de onde åndene ut, ved hvem er det da deres egne sønner driver dem ut? Derfor skal de være deres dommere!"
+    },
+    {
+      "verse": 20,
+      "text": "Men er det ved Guds finger jeg driver de onde åndene ut, da er jo Guds rike kommet til dere."
+    },
+    {
+      "verse": 21,
+      "text": "Når den sterke med våpen vokter sin egen gård, får eiendommen hans være i fred."
+    },
+    {
+      "verse": 22,
+      "text": "Men når en som er sterkere enn han, kommer over ham og overvinner ham, da tar han fra ham våpnene hans, som han hadde satt sin lit til, og byttet hans deler han ut."
+    },
+    {
+      "verse": 23,
+      "text": "Den som ikke er med meg, han er imot meg. Og den som ikke samler med meg, han sprer."
+    },
+    {
+      "verse": 24,
+      "text": "Når den urene ånden er fart ut av et menneske, går den gjennom tørre trakter og søker hvile. Når den ikke finner det, sier den: Jeg vil vende tilbake til huset mitt som jeg for ut av."
+    },
+    {
+      "verse": 25,
+      "text": "Og når den kommer dit, finner den det feid og pyntet."
+    },
+    {
+      "verse": 26,
+      "text": "Da går den bort og tar med seg sju andre ånder, verre enn den selv. De går inn og bor der. Og for det mennesket blir det siste verre enn det første."
+    },
+    {
+      "verse": 27,
+      "text": "Som han sa dette, skjedde det at en kvinne i mengden ropte til ham: Salig er det morsliv som har båret deg, og det bryst som du har diet!"
+    },
+    {
+      "verse": 28,
+      "text": "Men han sa: Ja, salige er de som hører Guds ord og tar vare på det!"
+    },
+    {
+      "verse": 29,
+      "text": "Da nå folket strømmet til, tok han til orde: Denne slekt er en ond slekt. Den krever tegn, og tegn skal ikke gis den, uten Jona-tegnet."
+    },
+    {
+      "verse": 30,
+      "text": "For likesom Jona ble et tegn for folket i Ninive, slik skal også Menneskesønnen bli det for denne slekt."
+    },
+    {
+      "verse": 31,
+      "text": "Dronningen fra syden skal stå opp i dommen sammen med mennene av denne slekt, og fordømme dem. For hun kom fra jordens ende for å høre Salomos visdom - og se, her er mer enn Salomo!"
+    },
+    {
+      "verse": 32,
+      "text": "Ninives menn skal stå opp i dommen sammen med denne slekt, og fordømme den. For de omvendte seg ved Jonas forkynnelse, og se, her er mer enn Jona!"
+    },
+    {
+      "verse": 33,
+      "text": "Ingen tenner et lys og setter det i kjelleren eller under et kar, men i lysestaken, for at de som kommer inn, kan se skinnet av det."
+    },
+    {
+      "verse": 34,
+      "text": "Øyet er legemets lys. Når ditt øye er friskt, da er også hele ditt legeme opplyst. Men er det sykt, er også ditt legeme mørkt."
+    },
+    {
+      "verse": 35,
+      "text": "Se da til at lyset i deg ikke er mørke!"
+    },
+    {
+      "verse": 36,
+      "text": "Hvis altså hele ditt legeme er lyst, og ikke har noen del som er mørk, da vil det være så helt opplyst som når lampen lyser på deg med strålende skinn."
+    },
+    {
+      "verse": 37,
+      "text": "Da han hadde talt, ba en fariseer ham om å ete hos seg, og Jesus gikk inn og satte seg til bords."
+    },
+    {
+      "verse": 38,
+      "text": "Men da fariseeren så at han ikke vasket seg først, før måltidet, undret han seg."
+    },
+    {
+      "verse": 39,
+      "text": "Men Herren sa til ham: Nå, dere fariseere! Dere renser beger og fat utvendig. Men innvendig er dere fulle av rov og ondskap."
+    },
+    {
+      "verse": 40,
+      "text": "Dårer! Han som skapte det utvendige, har han ikke også skapt det som er innvendig?"
+    },
+    {
+      "verse": 41,
+      "text": "Men gi det som er inni, til almisse, og se, da er alt rent for dere!"
+    },
+    {
+      "verse": 42,
+      "text": "Men ve dere, fariseere! For dere gir tiende av mynte og rute og alle slags hagevekster, og forsømmer rettferd og kjærlighet til Gud. Dette burde gjøres og det andre ikke lates ugjort."
+    },
+    {
+      "verse": 43,
+      "text": "Ve dere, fariseere! For dere elsker de fremste setene i synagogene og vil gjerne at folk skal hilse på dere på torget."
+    },
+    {
+      "verse": 44,
+      "text": "Ve dere! For dere er likesom ukjennelige graver, som menneskene går omkring på uten å vite det."
+    },
+    {
+      "verse": 45,
+      "text": "Da tok en av de lovkyndige til orde og sa til ham: Mester! Når du sier dette, krenker du også oss."
+    },
+    {
+      "verse": 46,
+      "text": "Men han sa: Ve også over dere lovkyndige! For dere lesser tunge byrder på menneskene, byrder som de vanskelig kan bære, og selv rører dere ikke byrdene med en finger!"
+    },
+    {
+      "verse": 47,
+      "text": "Ve dere, fordi dere bygger gravmæler for profetene, de som deres fedre slo i hjel!"
+    },
+    {
+      "verse": 48,
+      "text": "Altså gir dere vitnesbyrd og samtykke til deres fedres gjerninger. For de slo i hjel, og dere bygger!"
+    },
+    {
+      "verse": 49,
+      "text": "Derfor har Guds visdom sagt: Jeg vil sende til dem profeter og apostler. Noen av dem skal de slå i hjel, og noen skal de forfølge,"
+    },
+    {
+      "verse": 50,
+      "text": "for at alle profeters blod, som er utøst fra verdens grunnvoll ble lagt, skal bli krevd av denne slekt,"
+    },
+    {
+      "verse": 51,
+      "text": "fra Abels blod til Sakarjas blod, han som ble drept mellom alteret og templet. Ja, sier jeg dere, av denne slekt skal det bli krevd."
+    },
+    {
+      "verse": 52,
+      "text": "Ve dere lovkyndige! For dere har tatt kunnskapens nøkkel. Selv har dere ikke gått inn, og dem som var i ferd med å gå inn, har dere hindret."
+    },
+    {
+      "verse": 53,
+      "text": "Da han var kommet ut derfra, begynte de skriftlærde og fariseerne å trenge hardt inn på ham og spørre ham ut om mange ting."
+    },
+    {
+      "verse": 54,
+      "text": "For de lurte på ham for å fange ham i noe av det han sa."
+    }
+  ]
+}

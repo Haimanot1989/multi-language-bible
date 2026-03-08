@@ -1,0 +1,203 @@
+{
+  "book": "Luke",
+  "bookNumber": 42,
+  "chapter": 6,
+  "verses": [
+    {
+      "verse": 1,
+      "text": "Det skjedde på den nestførste sabbaten at Jesus gikk gjennom kornåkrene, og disiplene hans plukket aks, gned dem ut med hendene og spiste."
+    },
+    {
+      "verse": 2,
+      "text": "Noen av fariseerne sa da: Hvorfor gjør dere noe som ikke er tillatt på sabbaten?"
+    },
+    {
+      "verse": 3,
+      "text": "Jesus svarte dem og sa: Har dere virkelig ikke lest hva David gjorde da han var sulten, han og de som var med ham,"
+    },
+    {
+      "verse": 4,
+      "text": "hvordan han gikk inn i Guds hus og tok og åt skuebrødene, som ingen andre enn prestene har lov til å ete, og ga også til dem som var med ham?"
+    },
+    {
+      "verse": 5,
+      "text": "Og han sa til dem: Menneskesønnen er herre også over sabbaten."
+    },
+    {
+      "verse": 6,
+      "text": "Og det skjedde på en annen sabbat at han gikk inn i synagogen og lærte. Der var det en mann med en vissen høyrehånd."
+    },
+    {
+      "verse": 7,
+      "text": "De skriftlærde og fariseerne voktet på Jesus for å se om han ville helbrede på sabbaten, for å finne noe å anklage ham for."
+    },
+    {
+      "verse": 8,
+      "text": "Men han visste hva de tenkte, og sa til mannen med den visne hånden: Reis deg og stå fram! Og han reiste seg og kom fram."
+    },
+    {
+      "verse": 9,
+      "text": "Jesus sa da til dem: Jeg spør dere: Er det tillatt på sabbaten å gjøre godt eller å gjøre ondt, å berge liv eller å ødelegge det?"
+    },
+    {
+      "verse": 10,
+      "text": "Han så omkring på dem alle og sa til mannen: Rekk hånden ut! Han gjorde det, og hånden hans ble frisk."
+    },
+    {
+      "verse": 11,
+      "text": "Men de ble fra seg av raseri, og de samtalte med hverandre om hva de skulle gjøre med Jesus."
+    },
+    {
+      "verse": 12,
+      "text": "I disse dagene skjedde det at han gikk opp i fjellet for å be. Og han ble der hele natten i bønn til Gud."
+    },
+    {
+      "verse": 13,
+      "text": "Da det ble dag, kalte han til seg disiplene sine, og av dem valgte han ut tolv, som han også kalte apostler:"
+    },
+    {
+      "verse": 14,
+      "text": "Simon, som han også ga navnet Peter, og hans bror Andreas, og Jakob og Johannes og Filip og Bartolomeus og"
+    },
+    {
+      "verse": 15,
+      "text": "Matteus og Tomas og Jakob, Alfeus’ sønn, og Simon, som ble kalt seloten,"
+    },
+    {
+      "verse": 16,
+      "text": "og Judas, Jakobs sønn, og Judas Iskariot, som ble forræder."
+    },
+    {
+      "verse": 17,
+      "text": "Og han gikk ned sammen med dem og ble stående på en slette. Der var en stor flokk av disiplene hans og en stor folkemengde fra hele Judea, Jerusalem og kystlandet ved Tyrus og Sidon."
+    },
+    {
+      "verse": 18,
+      "text": "De var kommet for å høre ham og bli helbredet for sine sykdommer. Også de som var plaget av urene ånder, ble helbredet."
+    },
+    {
+      "verse": 19,
+      "text": "Og hele folkemengden prøvde å få røre ved ham, for det gikk en kraft ut fra ham og helbredet alle."
+    },
+    {
+      "verse": 20,
+      "text": "Og han løftet sine øyne, så på sine disipler og sa: Salige er dere fattige, for Guds rike er deres."
+    },
+    {
+      "verse": 21,
+      "text": "Salige er dere som nå hungrer, for dere skal bli mettet. Salige er dere som nå gråter, for dere skal le."
+    },
+    {
+      "verse": 22,
+      "text": "Salige er dere når menneskene hater dere, og når de støter dere ut, spotter dere og kaster deres navn fra seg som noe ondt for Menneskesønnens skyld."
+    },
+    {
+      "verse": 23,
+      "text": "Gled dere på den dagen og spring av fryd! For se, stor er den lønn dere har i himmelen. For på samme vis gjorde deres fedre med profetene."
+    },
+    {
+      "verse": 24,
+      "text": "Men ve dere som er rike, for dere har alt fått deres trøst."
+    },
+    {
+      "verse": 25,
+      "text": "Ve dere som nå er mette, for dere skal hungre! Ve dere som nå ler, for dere skal sørge og gråte!"
+    },
+    {
+      "verse": 26,
+      "text": "Ve dere når alle mennesker taler vel om dere, for det gjorde også deres fedre med de falske profetene!"
+    },
+    {
+      "verse": 27,
+      "text": "Men til dere som hører, sier jeg: Elsk deres fiender, gjør vel imot dem som hater dere,"
+    },
+    {
+      "verse": 28,
+      "text": "velsign dem som forbanner dere, be for dem som taler ille om dere."
+    },
+    {
+      "verse": 29,
+      "text": "Om noen slår deg på det ene kinnet, så vend også det andre til! Når en tar ytterkappen din fra deg, så nekt ham heller ikke kappen!"
+    },
+    {
+      "verse": 30,
+      "text": "Gi til hver den som ber deg, og krev ikke tilbake fra den som tar ifra deg det som ditt er."
+    },
+    {
+      "verse": 31,
+      "text": "Og som dere vil at menneskene skal gjøre mot dere, slik skal dere gjøre mot dem."
+    },
+    {
+      "verse": 32,
+      "text": "Om dere elsker dem som elsker dere, hva er det å takke dere for? Også syndere elsker jo dem som elsker dem."
+    },
+    {
+      "verse": 33,
+      "text": "Og om dere gjør vel imot dem som gjør vel imot dere, hva er det å takke dere for? Også syndere gjør det samme."
+    },
+    {
+      "verse": 34,
+      "text": "Og om dere låner ut til dem som dere håper å få igjen av, hva er det å takke dere for? Også syndere låner ut til syndere for å få likt igjen."
+    },
+    {
+      "verse": 35,
+      "text": "Men elsk deres fiender! Gjør vel og lån bort uten å vente noe igjen! Da skal deres lønn bli stor, og dere skal være Den Høyestes barn. For han er god mot de utakknemlige og onde."
+    },
+    {
+      "verse": 36,
+      "text": "Vær barmhjertige, likesom også deres Far er barmhjertig."
+    },
+    {
+      "verse": 37,
+      "text": "Døm ikke, så skal dere ikke bli dømt. Fordøm ikke, så skal dere ikke bli fordømt. Ettergi, så skal dere bli ettergitt."
+    },
+    {
+      "verse": 38,
+      "text": "Gi, så skal det bli gitt dere! Et godt mål, stappet, ristet og overfylt, skal bli gitt dere i fanget! For med det samme mål som dere har målt med, skal det måles igjen til dere."
+    },
+    {
+      "verse": 39,
+      "text": "Han sa også en lignelse til dem: Kan vel en blind lede en blind? Vil de ikke begge falle i grøften?"
+    },
+    {
+      "verse": 40,
+      "text": "En disippel er ikke over sin mester, men enhver som er utlært, blir som sin mester."
+    },
+    {
+      "verse": 41,
+      "text": "Hvorfor ser du flisen i din brors øye, men bjelken i ditt eget øye blir du ikke var?"
+    },
+    {
+      "verse": 42,
+      "text": "Hvordan kan du si til din bror: Bror, la meg trekke ut flisen i øyet ditt! - du som ikke ser bjelken i ditt eget øye? Hykler! Dra først bjelken ut av ditt eget øye! Så kan du se å dra ut flisen i din brors øye."
+    },
+    {
+      "verse": 43,
+      "text": "For det er ikke noe godt tre som bærer dårlig frukt. Heller ikke bærer et dårlig tre god frukt."
+    },
+    {
+      "verse": 44,
+      "text": "For hvert tre kjennes på sin egen frukt. En sanker jo ikke fiken av tistler, heller ikke plukker en druer fra tornebusker."
+    },
+    {
+      "verse": 45,
+      "text": "Et godt menneske bærer fram det som godt er, av hjertets gode forråd. Og et ondt menneske bærer fram det onde av sitt onde forråd. For det hjertet flyter over av, det taler hans munn."
+    },
+    {
+      "verse": 46,
+      "text": "Men hvorfor kaller dere meg Herre, Herre! - og gjør ikke det jeg sier?"
+    },
+    {
+      "verse": 47,
+      "text": "Hver den som kommer til meg og hører mine ord og gjør etter dem - hvem han er lik, vil jeg vise dere:"
+    },
+    {
+      "verse": 48,
+      "text": "Han er lik en mann som bygde et hus, og som gravde dypt ned og la grunnmuren på fjell. Da flommen kom, brøt strømmen imot huset, men greide ikke å rokke det, for det var godt bygd."
+    },
+    {
+      "verse": 49,
+      "text": "Men den som hører og ikke gjør etter det, er lik en mann som bygde et hus på bare marken, uten grunnmur. Strømmen brøt imot huset, og det falt straks sammen, og dette husets fall var stort."
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "book": "Psalms",
+  "bookNumber": 19,
+  "chapter": 15,
+  "verses": [
+    {
+      "verse": 1,
+      "text": "En salme av David. Herre, hvem skal bo i ditt telt? Hvem skal bygge på ditt hellige berg?"
+    },
+    {
+      "verse": 2,
+      "text": "Den som vandrer ustraffelig og gjør rettferdighet, som taler sannhet i sitt hjerte."
+    },
+    {
+      "verse": 3,
+      "text": "Den som ikke baktaler med sin tunge, som ikke gjør sin neste ondt og ikke fører skam over den som står ham nær."
+    },
+    {
+      "verse": 4,
+      "text": "Den som ser med forakt på den gudløse, men som ærer dem som frykter Herren. Den som sverger seg selv til skade og ikke bryter sitt ord."
+    },
+    {
+      "verse": 5,
+      "text": "Den som ikke låner ut sine penger mot rente, og som ikke tar bestikkelser mot den uskyldige. - Den som handler etter dette, skal ikke rokkes i evighet."
+    }
+  ]
+}

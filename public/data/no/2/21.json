@@ -1,0 +1,151 @@
+{
+  "book": "Exodus",
+  "bookNumber": 2,
+  "chapter": 21,
+  "verses": [
+    {
+      "verse": 1,
+      "text": "Dette er de lover du skal legge fram for dem:"
+    },
+    {
+      "verse": 2,
+      "text": "Når du kjøper en hebraisk trell, skal han tjene i seks år. Men i det sjuende året skal han gis fri uten vederlag."
+    },
+    {
+      "verse": 3,
+      "text": "Er han enslig når han kommer, skal han dra enslig bort. Dersom han er en gift mann, da skal hans hustru gå bort med ham."
+    },
+    {
+      "verse": 4,
+      "text": "Dersom hans herre gir ham en hustru, og hun føder ham sønner eller døtre, da skal hustruen og barna høre hennes herre til, og han skal gå enslig bort."
+    },
+    {
+      "verse": 5,
+      "text": "Men dersom trellen sier: Jeg holder av min herre, min hustru og mine barn, jeg vil ikke være fri og gå bort,"
+    },
+    {
+      "verse": 6,
+      "text": "da skal hans herre føre ham fram for Gud* og stille ham ved døren eller ved dørstolpen, og hans herre skal stikke en syl gjennom øret hans, og han skal tjene ham for alltid."
+    },
+    {
+      "verse": 7,
+      "text": "Når en mann selger sin datter som trellkvinne, da skal hun ikke gis fri som trellene."
+    },
+    {
+      "verse": 8,
+      "text": "Dersom hun mishager sin herre, som hadde pekt henne ut for seg selv, da skal han la henne kjøpes fri. Han skal ikke ha rett til å selge henne til et fremmed folk, for han har vært troløs mot henne."
+    },
+    {
+      "verse": 9,
+      "text": "Dersom han peker ut henne for sønnen sin, da skal han la henne ha døtres vanlige rett."
+    },
+    {
+      "verse": 10,
+      "text": "Dersom han lar sønnen få en annen hustru ved siden av henne, skal det ikke avkortes noe når det gjelder mat, klær eller ekteskapelig omgang."
+    },
+    {
+      "verse": 11,
+      "text": "Dersom han ikke lar henne få disse tre ting, da skal hun gis fri for intet, uten betaling."
+    },
+    {
+      "verse": 12,
+      "text": "Den som slår en mann så han dør, skal visselig lide døden."
+    },
+    {
+      "verse": 13,
+      "text": "Men hvis han ikke har stått mannen etter livet, men det er Gud som har styrt hans hånd, da vil jeg fastsette et tilfluktssted for ham."
+    },
+    {
+      "verse": 14,
+      "text": "Men om noen med overlegg dreper sin neste med svik, da skal du ta ham, om det så er fra mitt alter: Han skal dø."
+    },
+    {
+      "verse": 15,
+      "text": "Den som slår sin far eller sin mor, skal dø."
+    },
+    {
+      "verse": 16,
+      "text": "Den som stjeler et menneske og selger ham eller holder ham fanget, skal dø."
+    },
+    {
+      "verse": 17,
+      "text": "Den som forbanner sin far eller sin mor, skal dø."
+    },
+    {
+      "verse": 18,
+      "text": "Når menn kommer i trette, og den ene slår den andre med en stein eller med neven, og han ikke dør, men blir sengeliggende -"
+    },
+    {
+      "verse": 19,
+      "text": "dersom han da kommer opp igjen og går ute med stokk, da skal den som slo, være fri for straff. Men han skal gi ham vederlag for den tid han har tapt, og sørge for at han blir fullt frisk."
+    },
+    {
+      "verse": 20,
+      "text": "Når en mann slår sin trell eller trellkvinne med en stokk så de dør under hans hånd, da skal han straffes for det."
+    },
+    {
+      "verse": 21,
+      "text": "Men dersom trellen blir i live en eller to dager, skal han ikke straffes, siden han er hans eiendom."
+    },
+    {
+      "verse": 22,
+      "text": "Når menn kommer i slagsmål med hverandre og støter til en svanger kvinne, så hennes barn blir født, men ingen ulykke skjer, da skal den som gjorde det, gi den bot som kvinnens mann pålegger ham. Han skal gi etter dommeres skjønn."
+    },
+    {
+      "verse": 23,
+      "text": "Men dersom det skjer en ulykke, da skal du gi liv for liv,"
+    },
+    {
+      "verse": 24,
+      "text": "øye for øye, tann for tann, hånd for hånd, fot for fot,"
+    },
+    {
+      "verse": 25,
+      "text": "brent for brent, sår for sår, skramme for skramme."
+    },
+    {
+      "verse": 26,
+      "text": "Når en mann slår sin trell eller trellkvinne i øyet så det blir ødelagt, da skal han til vederlag for øyet gi dem fri."
+    },
+    {
+      "verse": 27,
+      "text": "Slår han ut en tann hos en trell eller trellkvinne, da skal han til vederlag for tannen gi dem fri."
+    },
+    {
+      "verse": 28,
+      "text": "Om en okse stanger en mann eller kvinne så de dør, da skal oksen steines. Kjøttet må ikke etes. Men oksens eier skal være fri for straff."
+    },
+    {
+      "verse": 29,
+      "text": "Men dersom det er en okse som har pleid å stange, og dens eier er advart, men ikke passer på den, og den dreper en mann eller kvinne, da skal oksen steines, og dens eier skal også dø."
+    },
+    {
+      "verse": 30,
+      "text": "Men blir han ilagt bøter, skal han betale så mye i løsepenger for sitt liv som det blir pålagt ham."
+    },
+    {
+      "verse": 31,
+      "text": "Er det en gutt eller pike oksen stanger, skal en også gå fram etter denne lov."
+    },
+    {
+      "verse": 32,
+      "text": "Dersom oksen stanger en trell eller en trellkvinne, da skal eieren gi tretti sekel sølv til deres herre. Og oksen skal steines."
+    },
+    {
+      "verse": 33,
+      "text": "Når en mann lar en brønn stå åpen eller graver en brønn og ikke dekker den til, og det faller en okse eller et esel i den,"
+    },
+    {
+      "verse": 34,
+      "text": "da skal brønnens eier godtgjøre det. Han skal gi dyrets eier penger i vederlag, men det døde dyret skal være hans."
+    },
+    {
+      "verse": 35,
+      "text": "Når en manns okse stanger en annen manns okse i hjel, da skal de selge den levende oksen og dele pengene for den. Det døde dyret skal de også dele."
+    },
+    {
+      "verse": 36,
+      "text": "Men er det bevislig at det er en okse som før har pleid å stange, og dens eier ikke passer på den, da skal han gi en annen okse isteden, men det døde dyret skal være hans."
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "book": "psalms",
+  "bookNumber": 19,
+  "chapter": 100,
+  "verses": [
+    {
+      "verse": 1,
+      "text": "Make a joyful noise unto the LORD, all ye lands."
+    },
+    {
+      "verse": 2,
+      "text": "Serve the LORD with gladness: come before his presence with singing."
+    },
+    {
+      "verse": 3,
+      "text": "Know ye that the LORD he\nis God:\nit is he\nthat\n hath made us, and not we ourselves;\nwe are his people, and the sheep of his pasture."
+    },
+    {
+      "verse": 4,
+      "text": "Enter into his gates with thanksgiving,\nand into his courts with praise: be thankful unto him,\nand bless his name."
+    },
+    {
+      "verse": 5,
+      "text": "For the LORD\nis good; his mercy\nis everlasting; and his truth\nendureth to all generations."
+    }
+  ]
+}
