@@ -2,6 +2,7 @@ import { useState, useCallback } from "react";
 import { VerseSearch } from "./VerseSearch";
 import { VerseDisplay } from "./VerseDisplay";
 import { CopyButton } from "./CopyButton";
+import { findBook } from "../lib/bookMapping";
 import type { Language } from "../lib/bibleData";
 
 export interface VerseResult {
@@ -27,10 +28,51 @@ const languageConfig: { lang: Language; label: string; isGeez: boolean }[] = [
   { lang: "am", label: "Amharic", isGeez: true },
 ];
 
+// Simple in-memory cache for chapter data
+const chapterCache = new Map<string, any>();
+
+async function fetchChapter(lang: string, bookNumber: number, chapter: number) {
+  const key = `${lang}/${bookNumber}/${chapter}`;
+  if (chapterCache.has(key)) {
+    return chapterCache.get(key);
+  }
+
+  // Also check localStorage
+  try {
+    const cached = localStorage.getItem(`bible:${key}`);
+    if (cached) {
+      const data = JSON.parse(cached);
+      chapterCache.set(key, data);
+      return data;
+    }
+  } catch { /* ignore */ }
+
+  try {
+    const response = await fetch(`/data/${lang}/${bookNumber}/${chapter}.json`);
+    if (!response.ok) return null;
+    const data = await response.json();
+    chapterCache.set(key, data);
+    try {
+      localStorage.setItem(`bible:${key}`, JSON.stringify(data));
+    } catch { /* localStorage full, ignore */ }
+    return data;
+  } catch {
+    return null;
+  }
+}
+
 export function BibleApp() {
   const [result, setResult] = useState<SearchResult | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [history, setHistory] = useState<string[]>(() => {
+    try {
+      const saved = localStorage.getItem("bible:history");
+      return saved ? JSON.parse(saved) : [];
+    } catch {
+      return [];
+    }
+  });
 
   const handleSearch = useCallback(
     async (
@@ -45,25 +87,20 @@ export function BibleApp() {
       setResult(null);
 
       try {
-        const verses: VerseResult[] = [];
+        // Fetch all 4 languages in parallel
+        const results = await Promise.all(
+          languageConfig.map(async (config) => {
+            const data = await fetchChapter(config.lang, bookNumber, chapter);
 
-        for (const config of languageConfig) {
-          try {
-            const response = await fetch(
-              `/data/${config.lang}/${bookNumber}/${chapter}.json`
-            );
-
-            if (!response.ok) {
-              verses.push({
+            if (!data) {
+              return {
                 language: config.lang,
                 label: config.label,
                 text: null,
                 isGeez: config.isGeez,
-              });
-              continue;
+              } as VerseResult;
             }
 
-            const data = await response.json();
             const end = verseEnd ?? verseStart;
             const matchingVerses = data.verses.filter(
               (v: { verse: number; text: string }) =>
@@ -75,21 +112,14 @@ export function BibleApp() {
                 ? matchingVerses.map((v: { text: string }) => v.text).join(" ")
                 : null;
 
-            verses.push({
+            return {
               language: config.lang,
               label: config.label,
               text,
               isGeez: config.isGeez,
-            });
-          } catch {
-            verses.push({
-              language: config.lang,
-              label: config.label,
-              text: null,
-              isGeez: config.isGeez,
-            });
-          }
-        }
+            } as VerseResult;
+          })
+        );
 
         const verseRef =
           verseEnd && verseEnd !== verseStart
@@ -103,7 +133,16 @@ export function BibleApp() {
           chapter,
           verseStart,
           verseEnd,
-          verses,
+          verses: results,
+        });
+
+        // Save to search history
+        setHistory((prev) => {
+          const updated = [reference, ...prev.filter((r) => r !== reference)].slice(0, 10);
+          try {
+            localStorage.setItem("bible:history", JSON.stringify(updated));
+          } catch { /* ignore */ }
+          return updated;
         });
       } catch (err) {
         setError("Failed to load verses. Please try again.");
@@ -118,6 +157,36 @@ export function BibleApp() {
   return (
     <div>
       <VerseSearch onSearch={handleSearch} loading={loading} />
+
+      {/* Recent searches */}
+      {history.length > 0 && !result && !loading && (
+        <div className="mt-4">
+          <p className="text-xs text-gray-400 uppercase tracking-wide mb-2">Recent searches</p>
+          <div className="flex flex-wrap gap-2">
+            {history.map((ref) => (
+              <button
+                key={ref}
+                onClick={() => {
+                  const match = ref.match(/^(.+?)\s+(\d+):(\d+)(?:-(\d+))?$/);
+                  if (!match) return;
+                  const book = findBook(match[1]);
+                  if (!book) return;
+                  handleSearch(
+                    book.name,
+                    book.bookNumber,
+                    parseInt(match[2]),
+                    parseInt(match[3]),
+                    match[4] ? parseInt(match[4]) : undefined
+                  );
+                }}
+                className="px-3 py-1 text-sm bg-white border border-gray-200 rounded-full text-gray-600 hover:bg-gray-50 hover:border-gray-300 transition-colors"
+              >
+                {ref}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
 
       {error && (
         <div className="mt-4 p-4 bg-red-50 border border-red-200 rounded-lg text-red-700">
@@ -146,4 +215,3 @@ export function BibleApp() {
     </div>
   );
 }
-
