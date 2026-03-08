@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import '../styles/global.css';
+import { BibleApp } from '../components/BibleApp';
 ---
 
 <Layout title="Multi-Language Bible">
@@ -12,7 +13,7 @@ import '../styles/global.css';
       </div>
     </header>
     <main class="max-w-5xl mx-auto px-4 py-8">
-      <p class="text-gray-500">Search component coming soon...</p>
+      <BibleApp client:load />
     </main>
   </div>
 </Layout>

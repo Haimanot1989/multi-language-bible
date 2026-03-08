@@ -22,7 +22,7 @@ export function saveChapter(
   chapter: number,
   data: ScrapedChapter
 ): void {
-  const dir = path.join("data", lang, String(bookNumber));
+  const dir = path.join("public", "data", lang, String(bookNumber));
   fs.mkdirSync(dir, { recursive: true });
   const filePath = path.join(dir, `${chapter}.json`);
   fs.writeFileSync(filePath, JSON.stringify(data, null, 2), "utf-8");
