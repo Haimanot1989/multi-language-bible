@@ -6,7 +6,12 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "scrape:english": "tsx scripts/scrape-english.ts",
+    "scrape:norwegian": "tsx scripts/scrape-norwegian.ts",
+    "scrape:tigrinya": "tsx scripts/scrape-tigrinya.ts",
+    "scrape:amharic": "tsx scripts/scrape-amharic.ts",
+    "scrape:all": "tsx scripts/scrape-all.ts"
   },
   "dependencies": {
     "@astrojs/react": "^4.4.2",
@@ -17,5 +22,9 @@
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "tailwindcss": "^4.2.1"
+  },
+  "devDependencies": {
+    "node-html-parser": "^7.1.0",
+    "tsx": "^4.21.0"
   }
 }
