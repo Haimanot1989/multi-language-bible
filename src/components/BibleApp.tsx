@@ -5,11 +5,17 @@ import { CopyButton } from "./CopyButton";
 import { findBook } from "../lib/bookMapping";
 import type { Language } from "../lib/bibleData";
 
+export interface VerseEntry {
+  verse: number;
+  text: string;
+}
+
 export interface VerseResult {
   language: Language;
   label: string;
   text: string | null;
   isGeez: boolean;
+  versesData?: VerseEntry[];
 }
 
 export interface SearchResult {
@@ -118,6 +124,7 @@ export function BibleApp() {
               label: config.label,
               text,
               isGeez: config.isGeez,
+              versesData: matchingVerses.length > 0 ? matchingVerses : undefined,
             } as VerseResult;
           })
         );

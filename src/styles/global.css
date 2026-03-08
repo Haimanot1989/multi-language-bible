@@ -9,3 +9,13 @@ body {
 .font-geez {
   font-family: 'Noto Sans Ethiopic', sans-serif;
 }
+
+.verse-number {
+  font-weight: 700;
+  font-size: 0.7em;
+  color: #6b7280;
+  margin-right: 2px;
+  vertical-align: super;
+  line-height: 0;
+}
+

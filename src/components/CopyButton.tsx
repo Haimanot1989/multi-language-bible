@@ -10,7 +10,16 @@ export function CopyButton({ result }: Props) {
 
   const handleCopy = async () => {
     const lines = result.verses
-      .map((v) => `${v.label}: ${v.text ?? "(not available)"}`)
+      .map((v) => {
+        if (!v.text) return `${v.label}: (not available)`;
+        if (v.versesData && v.versesData.length > 1) {
+          const numberedText = v.versesData
+            .map((entry) => `${entry.verse} ${entry.text}`)
+            .join(" ");
+          return `${v.label}: ${numberedText}`;
+        }
+        return `${v.label}: ${v.text}`;
+      })
       .join("\n");
 
     const text = `${result.reference}\n${lines}`;

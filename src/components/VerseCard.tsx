@@ -1,4 +1,4 @@
-import type { VerseResult } from "./BibleApp";
+import type { VerseResult, VerseEntry } from "./BibleApp";
 
 interface Props {
   verse: VerseResult;
@@ -13,6 +13,7 @@ const flagMap: Record<string, string> = {
 
 export function VerseCard({ verse }: Props) {
   const flag = flagMap[verse.language] || "";
+  const isMultiVerse = verse.versesData && verse.versesData.length > 1;
 
   return (
     <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-5 hover:shadow-md transition-shadow">
@@ -30,7 +31,14 @@ export function VerseCard({ verse }: Props) {
           }`}
           lang={verse.language === "ti" ? "ti" : verse.language === "am" ? "am" : undefined}
         >
-          {verse.text}
+          {isMultiVerse
+            ? verse.versesData!.map((v: VerseEntry) => (
+                <span key={v.verse}>
+                  <sup className="verse-number">{v.verse}</sup>
+                  {v.text}{" "}
+                </span>
+              ))
+            : verse.text}
         </p>
       ) : (
         <p className="text-gray-400 italic">Verse not available in this translation</p>
