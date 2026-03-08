@@ -21,7 +21,7 @@ async function scrapeChapter(
   bookNumber: number,
   chapter: number
 ): Promise<ScrapedChapter | null> {
-  const url = `https://bolls.life/get-text/NB/${bookNumber}/${chapter}/`;
+  const url = `https://bolls.life/get-text/DNB/${bookNumber}/${chapter}/`;
 
   try {
     const response = await fetch(url);

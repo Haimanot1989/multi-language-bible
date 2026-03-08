@@ -1,87 +1,45 @@
 /**
- * Scrape Amharic Bible from bible.org
+ * Scrape Amharic Bible from bible.geezexperience.com
  *
- * URL pattern: https://bible.org/sites/bible.org/resources/foreign/amharic/{abbr3}-{chapter}.htm
- * - abbr3: 3-letter book abbreviation (e.g., "joh", "psa", "mat")
- * - chapter: zero-padded for < 10 (e.g., "07")
- * - Special: Philippians uses "php" instead of "phi"
- *
- * HTML page contains verses as text that needs to be parsed.
+ * API: http://bible.geezexperience.com/server/list_api.php?language=amharic&book={bookNumber}&chapter={chapter}
+ * Returns JSON array with { id, book, chapter, no, article, ... }
  */
-import { parse as parseHTML } from "node-html-parser";
-import { bookList, saveChapter, sleep, type ScrapedChapter, type ScrapedVerse } from "./utils.js";
+import { bookList, saveChapter, sleep, type ScrapedChapter } from "./utils.js";
 
-const DELAY_MS = 300;
+const DELAY_MS = 250;
 
-function padChapter(ch: number): string {
-  return ch < 10 ? `0${ch}` : String(ch);
-}
-
-function extractVerses(html: string): ScrapedVerse[] {
-  const root = parseHTML(html);
-  const verses: ScrapedVerse[] = [];
-
-  // The bible.org Amharic pages have the text content in the body.
-  // Verses are typically numbered with patterns like "1 ", "2 ", etc.
-  // Let's try to get all text content and split by verse numbers.
-
-  // Try to find the main content area
-  const body = root.querySelector("body");
-  if (!body) return verses;
-
-  const text = body.text.trim();
-
-  // Try to split by verse numbers: look for patterns like "1 text 2 text 3 text"
-  // Verse numbers in Amharic pages appear as standalone numbers
-  const verseMatches = text.match(/(\d+)\s+([^\d]+)/g);
-
-  if (verseMatches) {
-    for (const match of verseMatches) {
-      const m = match.match(/^(\d+)\s+(.+)$/s);
-      if (m) {
-        const verseNum = parseInt(m[1], 10);
-        const verseText = m[2].trim();
-        if (verseNum > 0 && verseText.length > 0) {
-          verses.push({ verse: verseNum, text: verseText });
-        }
-      }
-    }
-  }
-
-  // Deduplicate and sort by verse number
-  const seen = new Set<number>();
-  const uniqueVerses: ScrapedVerse[] = [];
-  for (const v of verses) {
-    if (!seen.has(v.verse)) {
-      seen.add(v.verse);
-      uniqueVerses.push(v);
-    }
-  }
-
-  return uniqueVerses.sort((a, b) => a.verse - b.verse);
+interface GeezVerse {
+  id: string;
+  book: string;
+  chapter: string;
+  no: string;
+  noStart: string;
+  noEnd: string;
+  article: string;
+  pARAGRAPH: string;
+  entryDate: string | null;
+  remark: string | null;
+  linking: string;
 }
 
 async function scrapeChapter(
   bookName: string,
   bookNumber: number,
-  abbr3: string,
   chapter: number
 ): Promise<ScrapedChapter | null> {
-  const chapterStr = padChapter(chapter);
-  const url = `https://bible.org/sites/bible.org/resources/foreign/amharic/${abbr3}-${chapterStr}.htm`;
+  const url = `http://bible.geezexperience.com/server/list_api.php?language=amharic&book=${bookNumber}&chapter=${chapter}`;
 
   try {
     const response = await fetch(url);
     if (!response.ok) {
-      console.error(`  ✗ HTTP ${response.status} for ${bookName} ${chapter} (${url})`);
+      console.error(`  ✗ HTTP ${response.status} for ${bookName} ${chapter}`);
       return null;
     }
 
-    const html = await response.text();
-    const verses = extractVerses(html);
+    const data = (await response.json()) as GeezVerse[];
 
-    if (verses.length === 0) {
-      console.error(`  ✗ No verses parsed for ${bookName} ${chapter}`);
+    if (!Array.isArray(data) || data.length === 0) {
+      console.error(`  ✗ No verses for ${bookName} ${chapter}`);
       return null;
     }
 
@@ -89,7 +47,10 @@ async function scrapeChapter(
       book: bookName,
       bookNumber,
       chapter,
-      verses,
+      verses: data.map((v) => ({
+        verse: parseInt(v.no, 10),
+        text: v.article.trim(),
+      })),
     };
   } catch (err) {
     console.error(`  ✗ Error fetching ${bookName} ${chapter}:`, err);
@@ -98,17 +59,17 @@ async function scrapeChapter(
 }
 
 async function main() {
-  console.log("🇪🇹 Scraping Amharic from bible.org...\n");
+  console.log("🇪🇹 Scraping Amharic from bible.geezexperience.com...\n");
 
   let totalChapters = 0;
   let successCount = 0;
   let errorCount = 0;
 
   for (const book of bookList) {
-    console.log(`📖 ${book.name} (${book.chapters} chapters) [${book.abbr3}]`);
+    console.log(`📖 ${book.name} (${book.chapters} chapters)`);
 
     for (let ch = 1; ch <= book.chapters; ch++) {
-      const data = await scrapeChapter(book.name, book.bookNumber, book.abbr3, ch);
+      const data = await scrapeChapter(book.name, book.bookNumber, ch);
 
       if (data) {
         saveChapter("am", book.bookNumber, ch, data);
@@ -129,4 +90,3 @@ async function main() {
 }
 
 main().catch(console.error);
-
