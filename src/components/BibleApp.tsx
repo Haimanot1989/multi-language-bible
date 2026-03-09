@@ -1,4 +1,5 @@
 import { useState, useCallback } from "react";
+import { arrayMove } from "@dnd-kit/sortable";
 import { VerseSearch } from "./VerseSearch";
 import { VerseDisplay } from "./VerseDisplay";
 import { CopyButton } from "./CopyButton";
@@ -72,6 +73,18 @@ export function BibleApp() {
   const [result, setResult] = useState<SearchResult | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [languageOrder, setLanguageOrder] = useState<Language[]>(() => {
+    try {
+      const saved = localStorage.getItem("bible:languageOrder");
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length === languageConfig.length) {
+          return parsed;
+        }
+      }
+    } catch { /* ignore */ }
+    return languageConfig.map((c) => c.lang);
+  });
   const [history, setHistory] = useState<string[]>(() => {
     try {
       const saved = localStorage.getItem("bible:history");
@@ -162,6 +175,23 @@ export function BibleApp() {
     []
   );
 
+  const handleReorder = useCallback((fromIndex: number, toIndex: number) => {
+    setLanguageOrder((prev) => {
+      const updated = arrayMove(prev, fromIndex, toIndex);
+      try {
+        localStorage.setItem("bible:languageOrder", JSON.stringify(updated));
+      } catch { /* ignore */ }
+      return updated;
+    });
+  }, []);
+
+  // Sort verses by the user's preferred language order
+  const sortedVerses = result
+    ? [...result.verses].sort(
+        (a, b) => languageOrder.indexOf(a.language) - languageOrder.indexOf(b.language)
+      )
+    : [];
+
   return (
     <div>
       <VerseSearch onSearch={handleSearch} loading={loading} />
@@ -217,7 +247,7 @@ export function BibleApp() {
             </h2>
             <CopyButton result={result} />
           </div>
-          <VerseDisplay verses={result.verses} />
+          <VerseDisplay verses={sortedVerses} onReorder={handleReorder} />
         </div>
       )}
     </div>
