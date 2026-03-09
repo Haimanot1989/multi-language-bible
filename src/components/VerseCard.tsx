@@ -17,7 +17,6 @@ const flagMap: Record<string, string> = {
 export function VerseCard({ verse, dragListeners }: Props) {
   const [copied, setCopied] = useState(false);
   const flag = flagMap[verse.language] || "";
-  const isMultiVerse = verse.versesData && verse.versesData.length > 1;
 
   const verseLabel = (v: VerseEntry) =>
     v.verseEnd ? `${v.verse}-${v.verseEnd}` : `${v.verse}`;
@@ -26,9 +25,12 @@ export function VerseCard({ verse, dragListeners }: Props) {
     if (!verse.text) return;
 
     let textToCopy: string;
-    if (verse.versesData && verse.versesData.length > 1) {
+    if (verse.versesData && verse.versesData.length > 0) {
       textToCopy = verse.versesData
-        .map((entry) => `${verseLabel(entry)} ${entry.text}`)
+        .map((entry) => {
+          const shouldShowNumber = verse.versesData!.length > 1 || entry.verseEnd;
+          return shouldShowNumber ? `${verseLabel(entry)} ${entry.text}` : entry.text;
+        })
         .join(" ");
     } else {
       textToCopy = verse.text;
@@ -84,19 +86,22 @@ export function VerseCard({ verse, dragListeners }: Props) {
       </div>
 
       {verse.text ? (
-        isMultiVerse ? (
+        verse.versesData && verse.versesData.length > 0 ? (
           <div
             className={`text-gray-800 leading-relaxed space-y-1 ${
               verse.isGeez ? "font-geez text-lg" : "text-base"
             }`}
             lang={verse.language === "ti" ? "ti" : verse.language === "am" ? "am" : undefined}
           >
-            {verse.versesData!.map((v: VerseEntry) => (
-              <p key={v.verse} className="m-0">
-                <sup className="verse-number">{verseLabel(v)}</sup>
-                {v.text}
-              </p>
-            ))}
+            {verse.versesData.map((v: VerseEntry) => {
+              const showVerseNumber = verse.versesData!.length > 1 || v.verseEnd;
+              return (
+                <p key={v.verse} className="m-0">
+                  {showVerseNumber && <sup className="verse-number">{verseLabel(v)}</sup>}
+                  {v.text}
+                </p>
+              );
+            })}
           </div>
         ) : (
           <p
