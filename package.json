@@ -11,7 +11,8 @@
     "scrape:norwegian": "tsx scripts/scrape-norwegian.ts",
     "scrape:tigrinya": "tsx scripts/scrape-tigrinya.ts",
     "scrape:amharic": "tsx scripts/scrape-amharic.ts",
-    "scrape:all": "tsx scripts/scrape-all.ts"
+    "scrape:all": "tsx scripts/scrape-all.ts",
+    "rescrape:gaps": "tsx scripts/rescrape-gaps.ts"
   },
   "dependencies": {
     "@astrojs/react": "^4.4.2",

@@ -47,10 +47,15 @@ async function scrapeChapter(
       book: bookName,
       bookNumber,
       chapter,
-      verses: data.map((v) => ({
-        verse: parseInt(v.no, 10),
-        text: v.article.trim(),
-      })),
+      verses: data.map((v) => {
+        const verse = parseInt(v.noStart, 10) || parseInt(v.no, 10);
+        const noEnd = parseInt(v.noEnd, 10);
+        return {
+          verse,
+          ...(noEnd > verse ? { verseEnd: noEnd } : {}),
+          text: v.article.trim(),
+        };
+      }),
     };
   } catch (err) {
     console.error(`  ✗ Error fetching ${bookName} ${chapter}:`, err);

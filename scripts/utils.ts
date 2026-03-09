@@ -3,6 +3,7 @@ import * as path from "path";
 
 export interface ScrapedVerse {
   verse: number;
+  verseEnd?: number;
   text: string;
 }
 
