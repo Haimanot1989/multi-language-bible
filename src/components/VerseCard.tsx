@@ -63,21 +63,30 @@ export function VerseCard({ verse }: Props) {
       </div>
 
       {verse.text ? (
-        <p
-          className={`text-gray-800 leading-relaxed ${
-            verse.isGeez ? "font-geez text-lg" : "text-base"
-          }`}
-          lang={verse.language === "ti" ? "ti" : verse.language === "am" ? "am" : undefined}
-        >
-          {isMultiVerse
-            ? verse.versesData!.map((v: VerseEntry) => (
-                <span key={v.verse}>
-                  <sup className="verse-number">{v.verse}</sup>
-                  {v.text}{" "}
-                </span>
-              ))
-            : verse.text}
-        </p>
+        isMultiVerse ? (
+          <div
+            className={`text-gray-800 leading-relaxed space-y-1 ${
+              verse.isGeez ? "font-geez text-lg" : "text-base"
+            }`}
+            lang={verse.language === "ti" ? "ti" : verse.language === "am" ? "am" : undefined}
+          >
+            {verse.versesData!.map((v: VerseEntry) => (
+              <p key={v.verse} className="m-0">
+                <sup className="verse-number">{v.verse}</sup>
+                {v.text}
+              </p>
+            ))}
+          </div>
+        ) : (
+          <p
+            className={`text-gray-800 leading-relaxed ${
+              verse.isGeez ? "font-geez text-lg" : "text-base"
+            }`}
+            lang={verse.language === "ti" ? "ti" : verse.language === "am" ? "am" : undefined}
+          >
+            {verse.text}
+          </p>
+        )
       ) : (
         <p className="text-gray-400 italic">Verse not available in this translation</p>
       )}
