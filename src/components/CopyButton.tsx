@@ -14,7 +14,10 @@ export function CopyButton({ result }: Props) {
         if (!v.text) return `${v.label}: (not available)`;
         if (v.versesData && v.versesData.length > 1) {
           const numberedText = v.versesData
-            .map((entry) => `${entry.verse} ${entry.text}`)
+            .map((entry) => {
+              const label = entry.verseEnd ? `${entry.verse}-${entry.verseEnd}` : `${entry.verse}`;
+              return `${label} ${entry.text}`;
+            })
             .join(" ");
           return `${v.label}: ${numberedText}`;
         }

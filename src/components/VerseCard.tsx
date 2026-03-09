@@ -19,13 +19,16 @@ export function VerseCard({ verse, dragListeners }: Props) {
   const flag = flagMap[verse.language] || "";
   const isMultiVerse = verse.versesData && verse.versesData.length > 1;
 
+  const verseLabel = (v: VerseEntry) =>
+    v.verseEnd ? `${v.verse}-${v.verseEnd}` : `${v.verse}`;
+
   const handleCopy = async () => {
     if (!verse.text) return;
 
     let textToCopy: string;
     if (verse.versesData && verse.versesData.length > 1) {
       textToCopy = verse.versesData
-        .map((entry) => `${entry.verse} ${entry.text}`)
+        .map((entry) => `${verseLabel(entry)} ${entry.text}`)
         .join(" ");
     } else {
       textToCopy = verse.text;
@@ -90,7 +93,7 @@ export function VerseCard({ verse, dragListeners }: Props) {
           >
             {verse.versesData!.map((v: VerseEntry) => (
               <p key={v.verse} className="m-0">
-                <sup className="verse-number">{v.verse}</sup>
+                <sup className="verse-number">{verseLabel(v)}</sup>
                 {v.text}
               </p>
             ))}

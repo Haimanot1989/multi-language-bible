@@ -8,6 +8,7 @@ import type { Language } from "../lib/bibleData";
 
 export interface VerseEntry {
   verse: number;
+  verseEnd?: number;
   text: string;
 }
 
@@ -37,6 +38,7 @@ const languageConfig: { lang: Language; label: string; isGeez: boolean }[] = [
 
 // Simple in-memory cache for chapter data
 const chapterCache = new Map<string, any>();
+const CACHE_VERSION = "v2";
 
 async function fetchChapter(lang: string, bookNumber: number, chapter: number) {
   const key = `${lang}/${bookNumber}/${chapter}`;
@@ -46,7 +48,7 @@ async function fetchChapter(lang: string, bookNumber: number, chapter: number) {
 
   // Also check localStorage
   try {
-    const cached = localStorage.getItem(`bible:${key}`);
+    const cached = localStorage.getItem(`bible:${CACHE_VERSION}:${key}`);
     if (cached) {
       const data = JSON.parse(cached);
       chapterCache.set(key, data);
@@ -61,7 +63,7 @@ async function fetchChapter(lang: string, bookNumber: number, chapter: number) {
     const data = await response.json();
     chapterCache.set(key, data);
     try {
-      localStorage.setItem(`bible:${key}`, JSON.stringify(data));
+      localStorage.setItem(`bible:${CACHE_VERSION}:${key}`, JSON.stringify(data));
     } catch { /* localStorage full, ignore */ }
     return data;
   } catch {
@@ -123,8 +125,8 @@ export function BibleApp() {
 
             const end = verseEnd ?? verseStart;
             const matchingVerses = data.verses.filter(
-              (v: { verse: number; text: string }) =>
-                v.verse >= verseStart && v.verse <= end
+              (v: { verse: number; verseEnd?: number; text: string }) =>
+                (v.verseEnd ?? v.verse) >= verseStart && v.verse <= end
             );
 
             const text =
