@@ -22,3 +22,11 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# generated search indexes
+public/search-index/**/*.json
+
+# playwright output
+playwright-report/
+test-results/
+
