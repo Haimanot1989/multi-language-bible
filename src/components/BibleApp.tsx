@@ -3,7 +3,7 @@ import { arrayMove } from "@dnd-kit/sortable";
 import { VerseSearch } from "./VerseSearch";
 import { VerseDisplay } from "./VerseDisplay";
 import { CopyButton } from "./CopyButton";
-import { findBook } from "../lib/bookMapping";
+import { parseReference } from "../lib/referenceParser";
 import type { Language } from "../lib/bibleData";
 
 export interface VerseEntry {
@@ -24,7 +24,7 @@ export interface SearchResult {
   reference: string;
   bookName: string;
   chapter: number;
-  verseStart: number;
+  verseStart?: number;
   verseEnd?: number;
   verses: VerseResult[];
 }
@@ -101,7 +101,7 @@ export function BibleApp() {
       bookName: string,
       bookNumber: number,
       chapter: number,
-      verseStart: number,
+      verseStart?: number,
       verseEnd?: number
     ) => {
       setLoading(true);
@@ -123,11 +123,14 @@ export function BibleApp() {
               } as VerseResult;
             }
 
-            const end = verseEnd ?? verseStart;
-            const matchingVerses = data.verses.filter(
-              (v: { verse: number; verseEnd?: number; text: string }) =>
-                (v.verseEnd ?? v.verse) >= verseStart && v.verse <= end
-            );
+            const matchingVerses =
+              verseStart === undefined
+                ? data.verses
+                : data.verses.filter(
+                    (v: { verse: number; verseEnd?: number; text: string }) =>
+                      (v.verseEnd ?? v.verse) >= verseStart &&
+                      v.verse <= (verseEnd ?? verseStart)
+                  );
 
             const text =
               matchingVerses.length > 0
@@ -144,11 +147,14 @@ export function BibleApp() {
           })
         );
 
-        const verseRef =
-          verseEnd && verseEnd !== verseStart
-            ? `${verseStart}-${verseEnd}`
-            : `${verseStart}`;
-        const reference = `${bookName} ${chapter}:${verseRef}`;
+        const reference =
+          verseStart === undefined
+            ? `${bookName} ${chapter}`
+            : `${bookName} ${chapter}:${
+                verseEnd && verseEnd !== verseStart
+                  ? `${verseStart}-${verseEnd}`
+                  : `${verseStart}`
+              }`;
 
         setResult({
           reference,
@@ -207,16 +213,14 @@ export function BibleApp() {
               <button
                 key={ref}
                 onClick={() => {
-                  const match = ref.match(/^(.+?)\s+(\d+):(\d+)(?:-(\d+))?$/);
-                  if (!match) return;
-                  const book = findBook(match[1]);
-                  if (!book) return;
+                  const parsed = parseReference(ref);
+                  if (!parsed) return;
                   handleSearch(
-                    book.name,
-                    book.bookNumber,
-                    parseInt(match[2]),
-                    parseInt(match[3]),
-                    match[4] ? parseInt(match[4]) : undefined
+                    parsed.book.name,
+                    parsed.book.bookNumber,
+                    parsed.chapter,
+                    parsed.verseStart,
+                    parsed.verseEnd
                   );
                 }}
                 className="px-3 py-1 text-sm bg-white border border-gray-200 rounded-full text-gray-600 hover:bg-gray-50 hover:border-gray-300 transition-colors"

@@ -1,12 +1,13 @@
 import { useState, useMemo } from "react";
-import { books, findBook } from "../lib/bookMapping";
+import { books } from "../lib/bookMapping";
+import { parseReference } from "../lib/referenceParser";
 
 interface Props {
   onSearch: (
     bookName: string,
     bookNumber: number,
     chapter: number,
-    verseStart: number,
+    verseStart?: number,
     verseEnd?: number
   ) => void;
   loading: boolean;
@@ -30,21 +31,16 @@ export function VerseSearch({ onSearch, loading }: Props) {
     const trimmed = searchText.trim();
     if (!trimmed) return;
 
-    // Parse reference like "Psalms 2:7" or "John 3:16-18"
-    const match = trimmed.match(
-      /^(\d?\s?[a-zA-Z\s]+?)\s+(\d+):(\d+)(?:\s*-\s*(\d+))?$/
+    const parsed = parseReference(trimmed);
+    if (!parsed) return;
+
+    onSearch(
+      parsed.book.name,
+      parsed.book.bookNumber,
+      parsed.chapter,
+      parsed.verseStart,
+      parsed.verseEnd
     );
-    if (!match) return;
-
-    const bookQuery = match[1].trim();
-    const ch = parseInt(match[2], 10);
-    const vs = parseInt(match[3], 10);
-    const ve = match[4] ? parseInt(match[4], 10) : undefined;
-
-    const book = findBook(bookQuery);
-    if (!book) return;
-
-    onSearch(book.name, book.bookNumber, ch, vs, ve);
   };
 
   const handleDropdownSearch = (e: React.FormEvent) => {
@@ -90,7 +86,7 @@ export function VerseSearch({ onSearch, loading }: Props) {
             type="text"
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
-            placeholder='e.g., "Psalms 2:7" or "John 3:16-18"'
+            placeholder='e.g., "Psalms 15", "Psalms 2:7", or "John 3:16-18"'
             className="flex-1 px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-800 placeholder-gray-400"
           />
           <button

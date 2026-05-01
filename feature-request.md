@@ -1,0 +1,3 @@
+- Data issue
+  - There are some scriptures that has \n added to them and this is noticable when copying them(like psalms 2:8)
+    - Figure out a way to access when is this necessary and when is it not? and then remove the \n when it is not necessary
