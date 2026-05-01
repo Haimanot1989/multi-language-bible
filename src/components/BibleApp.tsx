@@ -2,7 +2,6 @@ import { useState, useCallback, useEffect, useRef } from "react";
 import { arrayMove } from "@dnd-kit/sortable";
 import { VerseSearch } from "./VerseSearch";
 import { VerseDisplay } from "./VerseDisplay";
-import { CopyButton } from "./CopyButton";
 import { parseReference } from "../lib/referenceParser";
 import { findBook } from "../lib/bookMapping";
 import type { Language } from "../lib/bibleData";
@@ -511,7 +510,6 @@ export function BibleApp() {
                 </div>
               </div>
             </div>
-            <CopyButton result={result} />
           </div>
           <VerseDisplay
             verses={sortedVerses}
