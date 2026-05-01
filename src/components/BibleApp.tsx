@@ -1,9 +1,10 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { arrayMove } from "@dnd-kit/sortable";
 import { VerseSearch } from "./VerseSearch";
 import { VerseDisplay } from "./VerseDisplay";
 import { CopyButton } from "./CopyButton";
 import { parseReference } from "../lib/referenceParser";
+import { findBook } from "../lib/bookMapping";
 import type { Language } from "../lib/bibleData";
 
 export interface VerseEntry {
@@ -71,6 +72,81 @@ async function fetchChapter(lang: string, bookNumber: number, chapter: number) {
   }
 }
 
+interface UrlReference {
+  bookName: string;
+  bookNumber: number;
+  chapter: number;
+  verseStart?: number;
+  verseEnd?: number;
+}
+
+function getPathSegmentsFromLocation(location: Location): string[] {
+  const base = import.meta.env.BASE_URL;
+  const baseSegments = base.split("/").filter(Boolean);
+  const segments = location.pathname.split("/").filter(Boolean);
+
+  if (baseSegments.length > 0) {
+    const hasBasePrefix = baseSegments.every(
+      (segment, index) => segments[index] === segment
+    );
+    if (hasBasePrefix) {
+      return segments.slice(baseSegments.length);
+    }
+  }
+
+  return segments;
+}
+
+function parseUrlReference(location: Location): UrlReference | null {
+  const segments = getPathSegmentsFromLocation(location);
+  if (segments.length < 2) return null;
+
+  const [bookSlug, chapterText] = segments;
+  const chapter = parseInt(chapterText, 10);
+  if (!bookSlug || Number.isNaN(chapter)) return null;
+
+  const params = new URLSearchParams(location.search);
+  const verseParam = params.get("v")?.trim();
+  const reference = verseParam
+    ? `${bookSlug} ${chapter}:${verseParam}`
+    : `${bookSlug} ${chapter}`;
+
+  const parsed = parseReference(reference);
+  if (!parsed) return null;
+
+  return {
+    bookName: parsed.book.name,
+    bookNumber: parsed.book.bookNumber,
+    chapter: parsed.chapter,
+    verseStart: parsed.verseStart,
+    verseEnd: parsed.verseEnd,
+  };
+}
+
+function buildSearchUrl(
+  bookName: string,
+  chapter: number,
+  verseStart?: number,
+  verseEnd?: number
+): string {
+  const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+  const slug = findBook(bookName)?.abbr3 ?? bookName.toLowerCase().replace(/\s+/g, "");
+  const params = new URLSearchParams();
+
+  if (verseStart !== undefined) {
+    params.set(
+      "v",
+      verseEnd !== undefined && verseEnd !== verseStart
+        ? `${verseStart}-${verseEnd}`
+        : `${verseStart}`
+    );
+  }
+
+  const query = params.toString();
+  const path = `${base}/${slug}/${chapter}/`;
+  return query ? `${path}?${query}` : path;
+}
+
 export function BibleApp() {
   const [result, setResult] = useState<SearchResult | null>(null);
   const [loading, setLoading] = useState(false);
@@ -102,7 +178,8 @@ export function BibleApp() {
       bookNumber: number,
       chapter: number,
       verseStart?: number,
-      verseEnd?: number
+      verseEnd?: number,
+      options?: { updateUrl?: boolean }
     ) => {
       setLoading(true);
       setError(null);
@@ -165,6 +242,14 @@ export function BibleApp() {
           verses: results,
         });
 
+        if (options?.updateUrl !== false) {
+          const nextUrl = buildSearchUrl(bookName, chapter, verseStart, verseEnd);
+          const currentUrl = `${window.location.pathname}${window.location.search}`;
+          if (nextUrl !== currentUrl) {
+            window.history.pushState({}, "", nextUrl);
+          }
+        }
+
         // Save to search history
         setHistory((prev) => {
           const updated = [reference, ...prev.filter((r) => r !== reference)].slice(0, 10);
@@ -182,6 +267,45 @@ export function BibleApp() {
     },
     []
   );
+
+  useEffect(() => {
+    const initialReference = parseUrlReference(window.location);
+    if (!initialReference) return;
+
+    void handleSearch(
+      initialReference.bookName,
+      initialReference.bookNumber,
+      initialReference.chapter,
+      initialReference.verseStart,
+      initialReference.verseEnd,
+      { updateUrl: false }
+    );
+  }, [handleSearch]);
+
+  useEffect(() => {
+    const onPopState = () => {
+      const referenceFromUrl = parseUrlReference(window.location);
+
+      if (!referenceFromUrl) {
+        setResult(null);
+        setError(null);
+        setLoading(false);
+        return;
+      }
+
+      void handleSearch(
+        referenceFromUrl.bookName,
+        referenceFromUrl.bookNumber,
+        referenceFromUrl.chapter,
+        referenceFromUrl.verseStart,
+        referenceFromUrl.verseEnd,
+        { updateUrl: false }
+      );
+    };
+
+    window.addEventListener("popstate", onPopState);
+    return () => window.removeEventListener("popstate", onPopState);
+  }, [handleSearch]);
 
   const handleReorder = useCallback((fromIndex: number, toIndex: number) => {
     setLanguageOrder((prev) => {

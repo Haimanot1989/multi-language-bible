@@ -1,0 +1,37 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import '../../../styles/global.css';
+import { BibleApp } from '../../../components/BibleApp';
+import { books } from '../../../lib/bookMapping';
+
+export function getStaticPaths() {
+  return books.flatMap((book) =>
+    Array.from({ length: book.chapters }, (_, i) => ({
+      params: {
+        book: book.abbr3,
+        chapter: `${i + 1}`,
+      },
+    }))
+  );
+}
+---
+
+<Layout title="Multi-Language Bible">
+  <div class="min-h-screen flex flex-col">
+    <header class="bg-white shadow-sm border-b border-gray-200">
+      <div class="max-w-5xl 2xl:max-w-360 mx-auto px-4 py-4">
+        <h1 class="text-2xl font-bold text-gray-800">📖 Multi-Language Bible</h1>
+        <p class="text-sm text-gray-500 mt-1">Read scripture in Norwegian, English, Tigrinya & Amharic</p>
+      </div>
+    </header>
+    <main class="max-w-5xl 2xl:max-w-360 mx-auto px-4 py-8 flex-1 w-full">
+      <BibleApp client:load />
+    </main>
+    <footer class="border-t border-gray-200 bg-white mt-auto">
+      <div class="max-w-5xl 2xl:max-w-360 mx-auto px-4 py-4 text-center text-sm text-gray-400">
+        Multi-Language Bible Reader — Search once, read in four languages
+      </div>
+    </footer>
+  </div>
+</Layout>
+
