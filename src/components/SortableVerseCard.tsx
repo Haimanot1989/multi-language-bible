@@ -5,9 +5,10 @@ import { VerseCard } from "./VerseCard";
 
 interface Props {
   verse: VerseResult;
+  shareUrl: string;
 }
 
-export function SortableVerseCard({ verse }: Props) {
+export function SortableVerseCard({ verse, shareUrl }: Props) {
   const {
     attributes,
     listeners,
@@ -26,7 +27,7 @@ export function SortableVerseCard({ verse }: Props) {
 
   return (
     <div ref={setNodeRef} style={style} {...attributes}>
-      <VerseCard verse={verse} dragListeners={listeners} />
+      <VerseCard verse={verse} dragListeners={listeners} shareUrl={shareUrl} />
     </div>
   );
 }

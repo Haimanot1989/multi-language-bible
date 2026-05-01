@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
 import { arrayMove } from "@dnd-kit/sortable";
 import { VerseSearch } from "./VerseSearch";
 import { VerseDisplay } from "./VerseDisplay";
@@ -78,6 +78,28 @@ interface UrlReference {
   chapter: number;
   verseStart?: number;
   verseEnd?: number;
+  selectedLanguages?: Language[];
+}
+
+function isLanguage(value: string | null | undefined): value is Language {
+  return value === "no" || value === "en" || value === "ti" || value === "am";
+}
+
+function normalizeSelectedLanguages(
+  languages: Array<Language | null | undefined> | null | undefined
+): Language[] | null {
+  if (!languages || languages.length === 0) return null;
+
+  const languageSet = new Set(languages.filter(isLanguage));
+  const uniqueOrdered = languageConfig
+    .map((config) => config.lang)
+    .filter((lang) => languageSet.has(lang));
+
+  if (uniqueOrdered.length === 0 || uniqueOrdered.length === languageConfig.length) {
+    return null;
+  }
+
+  return uniqueOrdered;
 }
 
 function getPathSegmentsFromLocation(location: Location): string[] {
@@ -107,6 +129,7 @@ function parseUrlReference(location: Location): UrlReference | null {
 
   const params = new URLSearchParams(location.search);
   const verseParam = params.get("v")?.trim();
+  const langParam = params.get("lang")?.trim();
   const reference = verseParam
     ? `${bookSlug} ${chapter}:${verseParam}`
     : `${bookSlug} ${chapter}`;
@@ -120,6 +143,9 @@ function parseUrlReference(location: Location): UrlReference | null {
     chapter: parsed.chapter,
     verseStart: parsed.verseStart,
     verseEnd: parsed.verseEnd,
+    selectedLanguages: normalizeSelectedLanguages(
+      langParam?.split(",").map((lang) => lang.trim()).filter(isLanguage)
+    ) ?? undefined,
   };
 }
 
@@ -127,11 +153,13 @@ function buildSearchUrl(
   bookName: string,
   chapter: number,
   verseStart?: number,
-  verseEnd?: number
+  verseEnd?: number,
+  selectedLanguages?: Language[] | null
 ): string {
   const base = import.meta.env.BASE_URL.replace(/\/$/, "");
   const slug = findBook(bookName)?.abbr3 ?? bookName.toLowerCase().replace(/\s+/g, "");
   const params = new URLSearchParams();
+  const normalizedLanguages = normalizeSelectedLanguages(selectedLanguages);
 
   if (verseStart !== undefined) {
     params.set(
@@ -140,6 +168,10 @@ function buildSearchUrl(
         ? `${verseStart}-${verseEnd}`
         : `${verseStart}`
     );
+  }
+
+  if (normalizedLanguages) {
+    params.set("lang", normalizedLanguages.join(","));
   }
 
   const query = params.toString();
@@ -151,6 +183,8 @@ export function BibleApp() {
   const [result, setResult] = useState<SearchResult | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [selectedLanguages, setSelectedLanguages] = useState<Language[] | null>(null);
+  const selectedLanguagesRef = useRef<Language[] | null>(null);
   const [languageOrder, setLanguageOrder] = useState<Language[]>(() => {
     try {
       const saved = localStorage.getItem("bible:languageOrder");
@@ -172,6 +206,10 @@ export function BibleApp() {
     }
   });
 
+  useEffect(() => {
+    selectedLanguagesRef.current = selectedLanguages;
+  }, [selectedLanguages]);
+
   const handleSearch = useCallback(
     async (
       bookName: string,
@@ -179,11 +217,17 @@ export function BibleApp() {
       chapter: number,
       verseStart?: number,
       verseEnd?: number,
-      options?: { updateUrl?: boolean }
+      options?: { updateUrl?: boolean; selectedLanguages?: Language[] | null }
     ) => {
+      const nextSelectedLanguages =
+        options && "selectedLanguages" in options
+          ? normalizeSelectedLanguages(options.selectedLanguages)
+          : selectedLanguagesRef.current;
+
       setLoading(true);
       setError(null);
       setResult(null);
+      setSelectedLanguages(nextSelectedLanguages);
 
       try {
         // Fetch all 4 languages in parallel
@@ -243,7 +287,13 @@ export function BibleApp() {
         });
 
         if (options?.updateUrl !== false) {
-          const nextUrl = buildSearchUrl(bookName, chapter, verseStart, verseEnd);
+          const nextUrl = buildSearchUrl(
+            bookName,
+            chapter,
+            verseStart,
+            verseEnd,
+            nextSelectedLanguages
+          );
           const currentUrl = `${window.location.pathname}${window.location.search}`;
           if (nextUrl !== currentUrl) {
             window.history.pushState({}, "", nextUrl);
@@ -278,7 +328,10 @@ export function BibleApp() {
       initialReference.chapter,
       initialReference.verseStart,
       initialReference.verseEnd,
-      { updateUrl: false }
+      {
+        updateUrl: false,
+        selectedLanguages: initialReference.selectedLanguages ?? null,
+      }
     );
   }, [handleSearch]);
 
@@ -290,6 +343,7 @@ export function BibleApp() {
         setResult(null);
         setError(null);
         setLoading(false);
+        setSelectedLanguages(null);
         return;
       }
 
@@ -299,7 +353,10 @@ export function BibleApp() {
         referenceFromUrl.chapter,
         referenceFromUrl.verseStart,
         referenceFromUrl.verseEnd,
-        { updateUrl: false }
+        {
+          updateUrl: false,
+          selectedLanguages: referenceFromUrl.selectedLanguages ?? null,
+        }
       );
     };
 
@@ -317,12 +374,57 @@ export function BibleApp() {
     });
   }, []);
 
+  const updateVisibleLanguages = useCallback(
+    (nextSelectedLanguages: Language[] | null) => {
+      if (!result) return;
+
+      const normalizedLanguages = normalizeSelectedLanguages(nextSelectedLanguages);
+      setSelectedLanguages(normalizedLanguages);
+
+      const nextUrl = buildSearchUrl(
+        result.bookName,
+        result.chapter,
+        result.verseStart,
+        result.verseEnd,
+        normalizedLanguages
+      );
+      const currentUrl = `${window.location.pathname}${window.location.search}`;
+
+      if (nextUrl !== currentUrl) {
+        window.history.pushState({}, "", nextUrl);
+      }
+    },
+    [result]
+  );
+
+  const toggleLanguage = useCallback(
+    (language: Language) => {
+      const currentLanguages = selectedLanguages ?? languageConfig.map((config) => config.lang);
+      const isSelected = currentLanguages.includes(language);
+      const nextLanguages = isSelected
+        ? currentLanguages.filter((lang) => lang !== language)
+        : [...currentLanguages, language];
+
+      if (nextLanguages.length === 0) {
+        return;
+      }
+
+      updateVisibleLanguages(nextLanguages);
+    },
+    [selectedLanguages, updateVisibleLanguages]
+  );
+
   // Sort verses by the user's preferred language order
   const sortedVerses = result
-    ? [...result.verses].sort(
-        (a, b) => languageOrder.indexOf(a.language) - languageOrder.indexOf(b.language)
-      )
+    ? [...result.verses]
+        .sort((a, b) => languageOrder.indexOf(a.language) - languageOrder.indexOf(b.language))
+        .filter(
+          (verse) => !selectedLanguages || selectedLanguages.includes(verse.language)
+        )
     : [];
+
+  const effectiveSelectedLanguages =
+    selectedLanguages ?? languageConfig.map((config) => config.lang);
 
   return (
     <div>
@@ -371,13 +473,59 @@ export function BibleApp() {
 
       {result && !loading && (
         <div className="mt-6">
-          <div className="flex items-center justify-between mb-4">
-            <h2 className="text-xl font-bold text-gray-800">
-              {result.reference}
-            </h2>
+          <div className="flex flex-col gap-3 mb-4 md:flex-row md:items-center md:justify-between">
+            <div>
+              <h2 className="text-xl font-bold text-gray-800">{result.reference}</h2>
+              <div className="mt-3 rounded-lg border border-gray-200 bg-gray-50 p-3">
+                <p className="text-xs font-semibold uppercase tracking-wide text-gray-500 mb-2">
+                  Visible languages
+                </p>
+                <div className="flex flex-wrap gap-3">
+                  {languageConfig.map((config) => {
+                    const isChecked = effectiveSelectedLanguages.includes(config.lang);
+                    const isOnlySelectedLanguage =
+                      effectiveSelectedLanguages.length === 1 && isChecked;
+
+                    return (
+                      <label
+                        key={config.lang}
+                        className={`inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-sm transition-colors ${
+                          isChecked
+                            ? "border-blue-300 bg-blue-50 text-blue-700"
+                            : "border-gray-200 bg-white text-gray-600 hover:border-gray-300"
+                        } ${
+                          isOnlySelectedLanguage ? "cursor-not-allowed opacity-75" : "cursor-pointer"
+                        }`}
+                      >
+                        <input
+                          type="checkbox"
+                          checked={isChecked}
+                          disabled={isOnlySelectedLanguage}
+                          onChange={() => toggleLanguage(config.lang)}
+                          className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                        />
+                        <span>{config.label}</span>
+                      </label>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
             <CopyButton result={result} />
           </div>
-          <VerseDisplay verses={sortedVerses} onReorder={handleReorder} />
+          <VerseDisplay
+            verses={sortedVerses}
+            onReorder={handleReorder}
+            getShareUrl={(language) =>
+              buildSearchUrl(
+                result.bookName,
+                result.chapter,
+                result.verseStart,
+                result.verseEnd,
+                [language]
+              )
+            }
+          />
         </div>
       )}
     </div>
