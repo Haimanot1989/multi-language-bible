@@ -64,6 +64,14 @@ function getShardKey(token: string): string {
   return firstChar || "_";
 }
 
+function getShardFileName(shardKey: string): string {
+  // Use ASCII-only filenames so hosts that decode URL paths still map to real files.
+  const codePoints = Array.from(shardKey).map((char) =>
+    char.codePointAt(0)!.toString(16).padStart(4, "0")
+  );
+  return `u${codePoints.join("-")}.json`;
+}
+
 async function buildSearchIndexes() {
   console.log("🔍 Building search indexes...");
 
@@ -154,6 +162,13 @@ async function buildSearchIndexes() {
     const shardOutputDir = join(languageOutputDir, "shards");
     mkdirSync(shardOutputDir, { recursive: true });
 
+    // Remove old shard files so the output only contains the current naming scheme.
+    for (const existingFile of readdirSync(shardOutputDir)) {
+      if (existingFile.endsWith(".json")) {
+        unlinkSync(join(shardOutputDir, existingFile));
+      }
+    }
+
     const legacyOutputFile = join(outputDir, `${language}.json`);
     if (existsSync(legacyOutputFile)) {
       unlinkSync(legacyOutputFile);
@@ -180,7 +195,7 @@ async function buildSearchIndexes() {
     };
 
     for (const shardKey of Object.keys(shardedEntries).sort()) {
-      const shardFileName = `${encodeURIComponent(shardKey)}.json`;
+      const shardFileName = getShardFileName(shardKey);
       const shardPath = join(shardOutputDir, shardFileName);
       const shardPayload: SearchIndexShard = {
         entries: shardedEntries[shardKey],
