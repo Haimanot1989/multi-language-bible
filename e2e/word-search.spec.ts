@@ -21,6 +21,9 @@ test.describe("Word search", () => {
     await page.locator('button[type="submit"]', { hasText: "Search Words" }).click();
 
     await expect(page.getByRole("heading", { name: "Search Results" })).toBeVisible();
+    await expect(page).toHaveURL(/mode=word/);
+    await expect(page).toHaveURL(/q=beginning/);
+    await expect(page).toHaveURL(/wl=en/);
 
     const firstResult = page.locator("button.group").first();
     await expect(firstResult).toBeVisible();
@@ -34,6 +37,13 @@ test.describe("Word search", () => {
     await firstResult.click();
 
     await expect(page.getByText("Visible languages")).toBeVisible();
+  });
+
+  test("restores word-search results from a shared URL", async ({ page }) => {
+    await page.goto("/multi-language-bible/?mode=word&q=beginning&wl=en");
+
+    await expect(page.getByRole("heading", { name: "Search Results" })).toBeVisible();
+    await expect(page.locator("button.group").first()).toContainText("In the beginning");
   });
 });
 

@@ -84,6 +84,15 @@ interface UrlReference {
   selectedLanguages?: Language[];
 }
 
+interface UrlWordSearch {
+  query: string;
+  language: Language;
+}
+
+type UrlSearchState =
+  | { type: "verse"; value: UrlReference }
+  | { type: "word"; value: UrlWordSearch };
+
 function isLanguage(value: string | null | undefined): value is Language {
   return value === "no" || value === "en" || value === "ti" || value === "am";
 }
@@ -152,6 +161,36 @@ function parseUrlReference(location: Location): UrlReference | null {
   };
 }
 
+function parseUrlWordSearch(location: Location): UrlWordSearch | null {
+  const params = new URLSearchParams(location.search);
+  const mode = params.get("mode")?.trim();
+  const query = params.get("q")?.trim();
+  const languageParam = params.get("wl")?.trim();
+
+  if (mode !== "word" || !query) {
+    return null;
+  }
+
+  return {
+    query,
+    language: isLanguage(languageParam) ? languageParam : "en",
+  };
+}
+
+function parseUrlSearchState(location: Location): UrlSearchState | null {
+  const wordSearch = parseUrlWordSearch(location);
+  if (wordSearch) {
+    return { type: "word", value: wordSearch };
+  }
+
+  const verseSearch = parseUrlReference(location);
+  if (verseSearch) {
+    return { type: "verse", value: verseSearch };
+  }
+
+  return null;
+}
+
 function buildSearchUrl(
   bookName: string,
   chapter: number,
@@ -180,6 +219,15 @@ function buildSearchUrl(
   const query = params.toString();
   const path = `${base}/${slug}/${chapter}/`;
   return query ? `${path}?${query}` : path;
+}
+
+function buildWordSearchUrl(query: string, language: Language): string {
+  const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+  const params = new URLSearchParams();
+  params.set("mode", "word");
+  params.set("q", query);
+  params.set("wl", language);
+  return `${base}/?${params.toString()}`;
 }
 
 export function BibleApp() {
@@ -324,18 +372,33 @@ export function BibleApp() {
   );
 
   const handleWordSearch = useCallback(
-    async (query: string, language: string) => {
+    async (
+      query: string,
+      language: string,
+      options?: { updateUrl?: boolean }
+    ) => {
       setLoading(true);
       setError(null);
       setResult(null);
       setWordSearchResult(null);
+      setSelectedLanguages(null);
 
       try {
-        const result = await wordSearch(query, language as Language);
+        const normalizedLanguage: Language = isLanguage(language) ? language : "en";
+        const trimmedQuery = query.trim();
+        const result = await wordSearch(trimmedQuery, normalizedLanguage);
         setWordSearchResult(result);
 
+        if (options?.updateUrl !== false) {
+          const nextUrl = buildWordSearchUrl(trimmedQuery, normalizedLanguage);
+          const currentUrl = `${window.location.pathname}${window.location.search}`;
+          if (nextUrl !== currentUrl) {
+            window.history.pushState({}, "", nextUrl);
+          }
+        }
+
         if (result.totalHits === 0) {
-          setError(`No results found for "${query}" in ${language}`);
+          setError(`No results found for "${trimmedQuery}" in ${normalizedLanguage}`);
         }
       } catch (err) {
         setError("Failed to search. Please try again.");
@@ -348,9 +411,17 @@ export function BibleApp() {
   );
 
   useEffect(() => {
-    const initialReference = parseUrlReference(window.location);
-    if (!initialReference) return;
+    const initialSearchState = parseUrlSearchState(window.location);
+    if (!initialSearchState) return;
 
+    if (initialSearchState.type === "word") {
+      void handleWordSearch(initialSearchState.value.query, initialSearchState.value.language, {
+        updateUrl: false,
+      });
+      return;
+    }
+
+    const initialReference = initialSearchState.value;
     void handleSearch(
       initialReference.bookName,
       initialReference.bookNumber,
@@ -362,19 +433,29 @@ export function BibleApp() {
         selectedLanguages: initialReference.selectedLanguages ?? null,
       }
     );
-  }, [handleSearch]);
+  }, [handleSearch, handleWordSearch]);
 
   useEffect(() => {
     const onPopState = () => {
-      const referenceFromUrl = parseUrlReference(window.location);
+      const searchStateFromUrl = parseUrlSearchState(window.location);
 
-      if (!referenceFromUrl) {
+      if (!searchStateFromUrl) {
         setResult(null);
+        setWordSearchResult(null);
         setError(null);
         setLoading(false);
         setSelectedLanguages(null);
         return;
       }
+
+      if (searchStateFromUrl.type === "word") {
+        void handleWordSearch(searchStateFromUrl.value.query, searchStateFromUrl.value.language, {
+          updateUrl: false,
+        });
+        return;
+      }
+
+      const referenceFromUrl = searchStateFromUrl.value;
 
       void handleSearch(
         referenceFromUrl.bookName,
@@ -391,7 +472,7 @@ export function BibleApp() {
 
     window.addEventListener("popstate", onPopState);
     return () => window.removeEventListener("popstate", onPopState);
-  }, [handleSearch]);
+  }, [handleSearch, handleWordSearch]);
 
   const handleReorder = useCallback((fromIndex: number, toIndex: number) => {
     setLanguageOrder((prev) => {
