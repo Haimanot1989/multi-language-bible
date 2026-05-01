@@ -5,6 +5,7 @@ import { VerseDisplay } from "./VerseDisplay";
 import { parseReference } from "../lib/referenceParser";
 import { findBook } from "../lib/bookMapping";
 import type { Language } from "../lib/bibleData";
+import { getLocalizedBookName } from "../lib/localizedBookNames";
 
 export interface VerseEntry {
   verse: number;
@@ -514,6 +515,19 @@ export function BibleApp() {
           <VerseDisplay
             verses={sortedVerses}
             onReorder={handleReorder}
+            getReferenceTitle={(language) => {
+              const bookName = getLocalizedBookName(result.bookName, language);
+              if (result.verseStart === undefined) {
+                return `${bookName} ${result.chapter}`;
+              }
+
+              const verseRef =
+                result.verseEnd && result.verseEnd !== result.verseStart
+                  ? `${result.verseStart}-${result.verseEnd}`
+                  : `${result.verseStart}`;
+
+              return `${bookName} ${result.chapter}:${verseRef}`;
+            }}
             getShareUrl={(language) =>
               buildSearchUrl(
                 result.bookName,

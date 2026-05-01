@@ -20,9 +20,10 @@ interface Props {
   verses: VerseResult[];
   onReorder: (fromIndex: number, toIndex: number) => void;
   getShareUrl: (language: Language) => string;
+  getReferenceTitle: (language: Language) => string;
 }
 
-export function VerseDisplay({ verses, onReorder, getShareUrl }: Props) {
+export function VerseDisplay({ verses, onReorder, getShareUrl, getReferenceTitle }: Props) {
   const getGridClassName = (visibleCards: number) => {
     if (visibleCards <= 1) {
       return "grid grid-cols-1 gap-4";
@@ -75,6 +76,7 @@ export function VerseDisplay({ verses, onReorder, getShareUrl }: Props) {
               key={v.language}
               verse={v}
               shareUrl={getShareUrl(v.language)}
+              referenceTitle={getReferenceTitle(v.language)}
             />
           ))}
         </div>

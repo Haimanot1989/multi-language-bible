@@ -6,6 +6,7 @@ interface Props {
   verse: VerseResult;
   dragListeners?: SyntheticListenerMap;
   shareUrl: string;
+  referenceTitle: string;
 }
 
 const flagMap: Record<string, string> = {
@@ -15,15 +16,16 @@ const flagMap: Record<string, string> = {
   am: "🇪🇹",
 };
 
-export function VerseCard({ verse, dragListeners, shareUrl }: Props) {
+export function VerseCard({ verse, dragListeners, shareUrl, referenceTitle }: Props) {
   const [copied, setCopied] = useState(false);
   const [shared, setShared] = useState(false);
+  const [copiedWithTitle, setCopiedWithTitle] = useState(false);
   const flag = flagMap[verse.language] || "";
 
   const verseLabel = (v: VerseEntry) =>
     v.verseEnd ? `${v.verse}-${v.verseEnd}` : `${v.verse}`;
 
-  const handleCopy = async () => {
+  const getVerseTextToCopy = () => {
     if (!verse.text) return;
 
     let textToCopy: string;
@@ -38,12 +40,32 @@ export function VerseCard({ verse, dragListeners, shareUrl }: Props) {
       textToCopy = verse.text;
     }
 
+    return textToCopy;
+  };
+
+  const handleCopy = async () => {
+    const textToCopy = getVerseTextToCopy();
+    if (!textToCopy) return;
+
     try {
       await navigator.clipboard.writeText(textToCopy);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch (err) {
       console.error("Failed to copy:", err);
+    }
+  };
+
+  const handleCopyWithTitle = async () => {
+    const textToCopy = getVerseTextToCopy();
+    if (!textToCopy) return;
+
+    try {
+      await navigator.clipboard.writeText(`${referenceTitle}\n${textToCopy}`);
+      setCopiedWithTitle(true);
+      setTimeout(() => setCopiedWithTitle(false), 2000);
+    } catch (err) {
+      console.error("Failed to copy with reference:", err);
     }
   };
 
@@ -73,7 +95,7 @@ export function VerseCard({ verse, dragListeners, shareUrl }: Props) {
 
   return (
     <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-5 hover:shadow-md transition-shadow">
-      <div className="flex items-center justify-between mb-3">
+      <div className="flex items-center mb-2">
         <div className="flex items-center gap-2">
           {dragListeners && (
             <button
@@ -96,32 +118,46 @@ export function VerseCard({ verse, dragListeners, shareUrl }: Props) {
             {verse.label}
           </h3>
         </div>
-        <div className="flex items-center gap-2">
+      </div>
+
+      <div className="flex items-center gap-2 flex-wrap mb-3">
+        {verse.text && (
           <button
-            onClick={handleShare}
+            onClick={handleCopy}
             className={`px-2 py-1 rounded text-xs font-medium transition-all ${
-              shared
-                ? "bg-blue-100 text-blue-700 border border-blue-300"
+              copied
+                ? "bg-green-100 text-green-700 border border-green-300"
                 : "bg-gray-100 text-gray-500 border border-gray-200 hover:bg-gray-200 hover:text-gray-700"
             }`}
-            title="Share this language"
+            title="Copy text"
           >
-            {shared ? "✓ Shared" : "🔗 Share"}
+            {copied ? "✓ Copied" : "📋 Copy"}
           </button>
-          {verse.text && (
-            <button
-              onClick={handleCopy}
-              className={`px-2 py-1 rounded text-xs font-medium transition-all ${
-                copied
-                  ? "bg-green-100 text-green-700 border border-green-300"
-                  : "bg-gray-100 text-gray-500 border border-gray-200 hover:bg-gray-200 hover:text-gray-700"
-              }`}
-              title="Copy text"
-            >
-              {copied ? "✓ Copied" : "📋 Copy"}
-            </button>
-          )}
-        </div>
+        )}
+        <button
+          onClick={handleShare}
+          className={`px-2 py-1 rounded text-xs font-medium transition-all ${
+            shared
+              ? "bg-blue-100 text-blue-700 border border-blue-300"
+              : "bg-gray-100 text-gray-500 border border-gray-200 hover:bg-gray-200 hover:text-gray-700"
+          }`}
+          title="Share this language"
+        >
+          {shared ? "✓ Shared" : "🔗 Share"}
+        </button>
+        {verse.text && (
+          <button
+            onClick={handleCopyWithTitle}
+            className={`px-2 py-1 rounded text-xs font-medium transition-all ${
+              copiedWithTitle
+                ? "bg-purple-100 text-purple-700 border border-purple-300"
+                : "bg-gray-100 text-gray-500 border border-gray-200 hover:bg-gray-200 hover:text-gray-700"
+            }`}
+            title="Copy with reference"
+          >
+            {copiedWithTitle ? "✓ Copied ref" : "📌 Copy ref"}
+          </button>
+        )}
       </div>
 
       {verse.text ? (
