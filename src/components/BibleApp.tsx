@@ -2,10 +2,13 @@ import { useState, useCallback, useEffect, useRef } from "react";
 import { arrayMove } from "@dnd-kit/sortable";
 import { VerseSearch } from "./VerseSearch";
 import { VerseDisplay } from "./VerseDisplay";
+import { WordSearchResults } from "./WordSearchResults";
 import { parseReference } from "../lib/referenceParser";
 import { findBook } from "../lib/bookMapping";
 import type { Language } from "../lib/bibleData";
 import { getLocalizedBookName } from "../lib/localizedBookNames";
+import { wordSearch } from "../lib/search/searchIndex";
+import type { WordSearchResult } from "../lib/search/searchIndex";
 
 export interface VerseEntry {
   verse: number;
@@ -181,6 +184,7 @@ function buildSearchUrl(
 
 export function BibleApp() {
   const [result, setResult] = useState<SearchResult | null>(null);
+  const [wordSearchResult, setWordSearchResult] = useState<WordSearchResult | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [selectedLanguages, setSelectedLanguages] = useState<Language[] | null>(null);
@@ -227,6 +231,7 @@ export function BibleApp() {
       setLoading(true);
       setError(null);
       setResult(null);
+      setWordSearchResult(null);
       setSelectedLanguages(nextSelectedLanguages);
 
       try {
@@ -310,6 +315,30 @@ export function BibleApp() {
         });
       } catch (err) {
         setError("Failed to load verses. Please try again.");
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    },
+    []
+  );
+
+  const handleWordSearch = useCallback(
+    async (query: string, language: string) => {
+      setLoading(true);
+      setError(null);
+      setResult(null);
+      setWordSearchResult(null);
+
+      try {
+        const result = await wordSearch(query, language as Language);
+        setWordSearchResult(result);
+
+        if (result.totalHits === 0) {
+          setError(`No results found for "${query}" in ${language}`);
+        }
+      } catch (err) {
+        setError("Failed to search. Please try again.");
         console.error(err);
       } finally {
         setLoading(false);
@@ -428,7 +457,7 @@ export function BibleApp() {
 
   return (
     <div>
-      <VerseSearch onSearch={handleSearch} loading={loading} />
+      <VerseSearch onSearch={handleSearch} onWordSearch={handleWordSearch} loading={loading} />
 
       {/* Recent searches */}
       {history.length > 0 && !result && !loading && (
@@ -467,8 +496,17 @@ export function BibleApp() {
       {loading && (
         <div className="mt-8 text-center text-gray-500">
           <div className="inline-block animate-spin rounded-full h-8 w-8 border-4 border-gray-300 border-t-blue-600 mb-2"></div>
-          <p>Loading verses...</p>
+          <p>Loading {wordSearchResult ? "word search" : "verses"}...</p>
         </div>
+      )}
+
+      {wordSearchResult && !loading && (
+        <WordSearchResults
+          results={wordSearchResult.results}
+          language={wordSearchResult.language}
+          query={wordSearchResult.query}
+          onVerseClick={handleSearch}
+        />
       )}
 
       {result && !loading && (

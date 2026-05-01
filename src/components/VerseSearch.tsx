@@ -10,16 +10,19 @@ interface Props {
     verseStart?: number,
     verseEnd?: number
   ) => void;
+  onWordSearch: (query: string, language: string) => void;
   loading: boolean;
 }
 
-export function VerseSearch({ onSearch, loading }: Props) {
+export function VerseSearch({ onSearch, onWordSearch, loading }: Props) {
   const [searchText, setSearchText] = useState("");
   const [selectedBook, setSelectedBook] = useState("");
   const [chapter, setChapter] = useState("");
   const [verseStart, setVerseStart] = useState("");
   const [verseEnd, setVerseEnd] = useState("");
-  const [mode, setMode] = useState<"text" | "dropdown">("text");
+  const [mode, setMode] = useState<"text" | "dropdown" | "word">("text");
+  const [wordSearchQuery, setWordSearchQuery] = useState("");
+  const [wordSearchLanguage, setWordSearchLanguage] = useState<string>("en");
 
   const selectedBookInfo = useMemo(
     () => (selectedBook ? books.find((b) => b.name === selectedBook) : null),
@@ -54,10 +57,17 @@ export function VerseSearch({ onSearch, loading }: Props) {
     onSearch(selectedBookInfo.name, selectedBookInfo.bookNumber, ch, vs, ve);
   };
 
+  const handleWordSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    const query = wordSearchQuery.trim();
+    if (!query) return;
+    onWordSearch(query, wordSearchLanguage);
+  };
+
   return (
     <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
       {/* Mode toggle */}
-      <div className="flex gap-2 mb-4">
+      <div className="flex gap-2 mb-4 flex-wrap">
         <button
           onClick={() => setMode("text")}
           className={`px-3 py-1.5 text-sm rounded-lg transition-colors ${
@@ -78,6 +88,16 @@ export function VerseSearch({ onSearch, loading }: Props) {
         >
           Select from list
         </button>
+        <button
+          onClick={() => setMode("word")}
+          className={`px-3 py-1.5 text-sm rounded-lg transition-colors ${
+            mode === "word"
+              ? "bg-blue-600 text-white"
+              : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+          }`}
+        >
+          Search words
+        </button>
       </div>
 
       {mode === "text" ? (
@@ -97,7 +117,7 @@ export function VerseSearch({ onSearch, loading }: Props) {
             Search
           </button>
         </form>
-      ) : (
+      ) : mode === "dropdown" ? (
         <form onSubmit={handleDropdownSearch} className="space-y-3">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
             {/* Book selector */}
@@ -168,6 +188,35 @@ export function VerseSearch({ onSearch, loading }: Props) {
             className="w-full px-6 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors font-medium"
           >
             Search
+          </button>
+        </form>
+      ) : (
+        <form onSubmit={handleWordSearch} className="flex flex-col gap-3">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+            <input
+              type="text"
+              value={wordSearchQuery}
+              onChange={(e) => setWordSearchQuery(e.target.value)}
+              placeholder='e.g., "love", "faith", "hope"'
+              className="col-span-1 md:col-span-2 px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-800 placeholder-gray-400"
+            />
+            <select
+              value={wordSearchLanguage}
+              onChange={(e) => setWordSearchLanguage(e.target.value)}
+              className="px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800"
+            >
+              <option value="en">English</option>
+              <option value="no">Norwegian</option>
+              <option value="ti">Tigrinya</option>
+              <option value="am">Amharic</option>
+            </select>
+          </div>
+          <button
+            type="submit"
+            disabled={loading || !wordSearchQuery.trim()}
+            className="w-full px-6 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors font-medium"
+          >
+            Search Words
           </button>
         </form>
       )}
